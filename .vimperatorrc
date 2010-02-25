@@ -1,0 +1,101 @@
+echo "$HOME/.vimperatorrc loading ..."
+
+" カラースキーム
+colorscheme seaweed2
+" URL(と検索語)、Firefoxの履歴、ローカルファイルで自動補完を行ふ。
+set complete=slf
+" エディタを指定する。
+set editor="gvim -f"
+" 頁を開く際に入力欄にフォーカスしない。
+"set focuscontent
+" メニューバー(Menubar)だけ表示する。
+set guioptions=mT
+" 頁全体で検索語を強調表示する。
+set hlsearch
+" 検索時に大文字・小文字を無視する。
+set ignorecase
+" exコマンドで新しい頁を開く際、常に新しいタブで開く。
+set newtab=all
+" exモード時にタイプ中でも自動補完する。
+set wildoptions=auto
+
+" ステータスバーの背景色をグレーにする。
+"hi StatusLine color:black; background:#BBB; font-weight:normal;
+" 補完候補の文字色を変更する。
+"hi CompDesc color:#272; width:50%;
+"hi Preview color:#44C;
+" ヒント表示を變更する。
+"hi Hint font-family:monospace; font-size:11pt; line-height:1; color:black; background-color:#5FF; border-color:ButtonShadow; border-width:1px; border-style:solid; padding:1px;
+
+" direct_bookmark.js
+let g:direct_sbm_use_services_by_tag="h"
+let g:direct_sbm_use_services_by_post="dh"
+
+" ime_controller.js
+let g:ex_ime_mode="inactive"
+let g:textarea_ime_mode="inactive"
+
+" maine_coon.js
+let g:maine_coon_default = "ac"
+
+set verbose=1
+javascript <<EOM
+// プロファイル名。
+let profile_name = liberator.profileName;
+
+// ウィンドウタイトルにプロファイル名を挿入する。
+let title_string = 'Vimp (' + profile_name + ')';
+liberator.modules.options.get('titlestring').set(title_string);
+
+// OS
+var ostype = function(){
+    if (liberator.has('Win32'))   return 'Win32';
+    if (liberator.has('MacUnix')) return 'MaxUnix';
+    if (liberator.has('Unix'))    return 'Unix';
+    return;
+}
+
+// OS毎に異なる処理を行ふ。
+if (liberator.has("Win32")) {
+    let editor_path = 'C:\\\\Program\\ Files\\\\Vim\\\\vim72\\\\gvim.exe -f';
+    liberator.modules.options.get('editor').set(editor_path);
+}
+else if (liberator.has("MacUnix")) {
+}
+else if (liberator.has("Unix")) {
+    let editor_path = '/usr/bin/gvim -f';
+    liberator.modules.options.get('editor').set(editor_path);
+}
+else {
+    liberator.echo( "Other");
+}
+
+// chaika
+config.dialogs.push([
+    'chaika-side',
+    'Chaika',
+    function() openWebPanel('chaika', 'chrome://chaika/content/bbsmenu/page.xul'),
+]);
+config.dialogs.push([
+    'chaika',
+    'Chaika',
+    function() openUILinkIn('chrome://chaika/content/bbsmenu/page.xul', 'tab')
+]);
+// Foxage2ch
+config.dialogs.push([
+    'foxage2ch-side',
+    'Foxage2ch',
+    function() openWebPanel('foxage2ch', 'chrome://foxage2ch/content/foxage2ch.xul')
+]);
+config.dialogs.push([
+    'foxage2ch',
+    'Foxage2ch',
+    function() openUILinkIn('chrome://foxage2ch/content/foxage2ch.xul', 'tab')
+]);
+EOM
+
+source! /home/pyon/.vimperatorrc.local
+
+echo "$HOME/.vimperatorrc loaded"
+
+" vim: set ft=vimperator:
