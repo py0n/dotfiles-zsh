@@ -94,7 +94,7 @@ config.dialogs.push([
 ]);
 EOM
 
-source! /home/pyon/.vimperatorrc.local
+source! $HOME/.vimperatorrc.local
 
 echo "$HOME/.vimperatorrc loaded"
 
