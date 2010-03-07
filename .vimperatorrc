@@ -94,6 +94,9 @@ config.dialogs.push([
 ]);
 EOM
 
+" ウェブ魚拓
+command! wg :open javascript:window.location='http://megalodon.jp/?url='+escape(location.href);
+
 source! $HOME/.vimperatorrc.local
 
 echo "$HOME/.vimperatorrc loaded"
