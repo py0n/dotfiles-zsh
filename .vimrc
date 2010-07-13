@@ -539,6 +539,7 @@ if has('ruby') && has('autocmd')
 	augroup EditRuby
 		autocmd!
 		autocmd FileType ruby set omnifunc=rubycomplete#CompleteTags
+		autocmd FileType ruby set noexpandtab
 	augroup END
 endif
 
