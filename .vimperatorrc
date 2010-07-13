@@ -27,6 +27,10 @@ set wildoptions=auto
 " ヒント表示を變更する。
 "hi Hint font-family:monospace; font-size:11pt; line-height:1; color:black; background-color:#5FF; border-color:ButtonShadow; border-width:1px; border-style:solid; padding:1px;
 
+" char-hints-mod2.js
+let g:hintsio="iO"
+let g:hintchars="HJKLASDFGYUIOPQWERTNMZXCVB"
+
 " direct_bookmark.js
 let g:direct_sbm_use_services_by_tag="h"
 let g:direct_sbm_use_services_by_post="dh"
