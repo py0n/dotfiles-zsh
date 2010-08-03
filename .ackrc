@@ -1,0 +1,3 @@
+--ignore-dir=CVS
+--ignore-dir=.svn
+--ignore-dir=.git
