@@ -12,9 +12,12 @@ hi clear
 
 hi Bell					border: 0 none; background-color: #2f2f2f;
 hi Boolean				color: #f6e9e9;
+
+" コマンドライン
 hi CmdLine				font-family: monospace; padding: 1px;
 hi CmdOutput			white-space: pre;
 
+" 補完(1)
 hi CompDesc				color: #77a8c1; width: 50%;
 hi CompIcon				display: inline-block; margin-right: .5ex;
 hi CompIcon -append		min-width: 16px; width: 16px;
@@ -29,10 +32,14 @@ hi CompResult			width: 45%; overflow: hidden;
 hi CompTitle			color: #9acd32; background: #2f2f2f; font-weight: bold;
 hi CompTitle>*			padding: 0 .5ex;
 
+" エラーメッセージ
 hi ErrorMsg				background: #2f2f2f; color: #dc143c; /* crimson */
-hi ErrorMsg -append		font: bold 12pt monospace;
-hi Filter				font-weight: bold;
+hi ErrorMsg -append		font: bold 10pt monospace;
 
+" 補完(2)
+hi Filter				color: silver; font-weight: bold;
+
+" フレーム
 hi FrameIndicator			background-color: #ff4f2f;
 hi FrameIndicator -append	border: 24px dashed yellow;
 hi FrameIndicator -append 	opacity: 0.8; position: fixed;
@@ -44,17 +51,17 @@ hi Gradient				height: 1px; margin-bottom: -1px; margin-top: -1px;
 hi GradientLeft			background: #2f2f2f;
 hi GradientRight		background: #2f2f2f;
 
-hi Hint					background-color: #66cdaa; /* mediumaquamarine */
+hi Hint					background: #66cdaa; /* mediumaquamarine */
 hi Hint -append			border: 1px outset #66cdaa; /* mediumaquamarine */
 hi Hint -append			color: #000080; /* navy */
-hi Hint -append			font: bold 12pt monospace;
+hi Hint -append			font: bold 10pt monospace;
 hi Hint -append			opacity: .8;
 hi Hint -append			padding 0px 1px 0px 1px;
 hi Hint -append			-moz-border-radius: 4px;
 hi Hint::after			content: attr(number);
-hi HintActive			background-color: #2fbf2f; color: #f6e9e9;
+hi HintActive			background: #2fbf2f; color: #f6e9e9;
 hi HintActive -append	-moz-border-radius: 4px;
-hi HintElem				background-color: #2f2f2f; color: #f6e9e9;
+hi HintElem				background: #2f2f2f; color: #f6e9e9;
 hi HintElem -append		-moz-border-radius: 4px;
 hi HintImage			opacity: .1;
 
@@ -68,35 +75,40 @@ hi ModeMsg				color: #8ade8e; background: #2f2f2f;
 hi MoreMsg				color: #8ade8e; background: #2f2f2f;
 hi NonText				color: blue; min-height: 16px; padding-left: 2px;
 hi Normal				background: #2f2f2f; color: #8ade8e;
-hi Normal -append		font: normal 12pt monospace;
+hi Normal -append		font: normal 10pt monospace;
 hi Null					color: blue;
 hi Number				color: blue;
 hi Object				color: maroon;
 hi Preview				color: gray;
-hi Question				color: #8ade8e; background: green; font-weight: bold;
+hi Question				background: green; color: #8ade8e; font-weight: bold;
 hi Search				background-color: yellow; color: #2f2f2f;
 hi Search -append		font-size: inherit; padding: 0;
 
+" ステータスライン
 hi StatusLine				background: #2f2f2f;
 hi StatusLine -append		color: #9acd32; /* yellowgreen */
-hi StatusLine -append		font: normal 12pt monospace;
+hi StatusLine -append		font: normal 10pt monospace;
 hi StatusLineBroken			background: #2f2f2f;
 hi StatusLineBroken -append	color: #ff0000; /* red */
-hi StatusLineBroken -append	font: normal 12pt monospace;
+hi StatusLineBroken -append	font: normal 10pt monospace;
 hi StatusLineSecure			background: #2f2f2f;
 hi StatusLineSecure -append	color: #77a8c1;
-hi StatusLineSecure -append	font: normal 12pt monospace;
+hi StatusLineSecure -append	font: normal 10pt monospace;
 
 hi String				color: green;
 hi Tag					color: blue;
-hi Title				color: green; background: #2f2f2f; font-weight: bold;
+
+" タイトル(:pageinfo等で使用)
+hi Title				background: #2f2f2f; color: aquamarine;
+hi Title -append		font-weight: bold;
 
 hi URL					background: inherit; color: green;
 hi URL -append			text-decoration: none;
 hi URL:hover			text-decoration: underline; cursor: pointer;
 
+" 警告
 hi WarningMsg			background: #2f2f2f;
-hi WarningMsg -append	color: #ffff00; /* yellow */
-hi WarningMsg -append	font: bold 12pt monospace;
+hi WarningMsg -append	color: yellow;
+hi WarningMsg -append	font: bold 10pt monospace;
 
 " vim: noexpandtab
