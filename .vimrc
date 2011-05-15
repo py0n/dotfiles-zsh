@@ -8,7 +8,7 @@
 " http://vimwiki.net/?vimrc/9
 " http://www.kawaz.jp/pukiwiki/?vim#hb6f6961
 "
-" 此乃設定ファイルのエンコーディングを指定する
+" 本設定ファイルのエンコーディングを指定する
 if has('multi_byte')
 	scriptencoding utf-8
 endif
@@ -123,7 +123,7 @@ endfunc
 "更にファイルタイププラグインを有効にする。
 filetype plugin indent on
 "" ファイルを開く度にカレントディレクトリを変更する
-set autochdir
+"set autochdir
 "オートインデントする
 set autoindent
 "BSが改行、autoindentを超えて動作する
@@ -410,10 +410,10 @@ if has('autocmd')
 	augroup BinaryXXD
 		autocmd!
 		autocmd BufReadPre  *.bin let &binary=1
-		autocmd BufReadPost *.bin if &binary | slient %!xxd -g 1
+		autocmd BufReadPost *.bin if &binary | silent %!xxd -g 1
 		autocmd BufReadPost *.bin set ft=xxd | endif
 		autocmd BufWritePre *.bin if &binary | %!xxd -r | endif
-		autocmd BufWritePost *.bin if &binary | slient %!xxd -g 1
+		autocmd BufWritePost *.bin if &binary | silent %!xxd -g 1
 		autocmd BufWritePost *.bin set nomod | endif
 	augroup END
 endif
@@ -603,3 +603,9 @@ endif
 "======================================================================
 " vimrcをリロードする
 command! ReloadVimrc source $MYVIMRC
+
+" 外部ファイルを読み込む
+" http://vim-users.jp/2009/12/hack108/
+if filereadable(expand('~/.vimrc.local'))
+	source ~/.vimrc.local
+endif
