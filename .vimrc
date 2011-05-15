@@ -390,10 +390,14 @@ endif
 let g:Align_xstrlen=3
 " AlignCtrlで変更した設定を初期状態に戻す
 command! -nargs=0 AlignReset call Align#AlignCtrl("default")
+" eregex.vim
+" http://vim.wikia.com/wiki/Perl_compatible_regular_expressions#eregex.vim
+nnoremap / :M/
+nnoremap ./ /
 " Kwbd
 " バッファを削除してもウィンドウのレイアウトを崩さない
 " http://nanasi.jp/articles/vim/kwbd_vim.html
-command! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn 
+command! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
 
 "======================================================================
 " 以降、ファイルタイプ別の編集設定。
