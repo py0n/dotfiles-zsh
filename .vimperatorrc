@@ -1,15 +1,24 @@
 echo "$HOME/.vimperatorrc loading ..."
 
+" let
+
+let mapleader = ","
+
+" pluginloader
+
+let g:plugin_loader_roots = "~/scm/vimperator-plugins"
+
 " カラースキーム
-colorscheme seaweed2
+"colorscheme darkslate
+colorscheme indigo
 " URL(と検索語)、Firefoxの履歴、ローカルファイルで自動補完を行ふ。
 set complete=slf
 " エディタを指定する。
 set editor="gvim -f"
 " 頁を開く際に入力欄にフォーカスしない。
-"set focuscontent
+set focuscontent
 " メニューバー(Menubar)だけ表示する。
-set guioptions=mT
+set gui=addons,nobookmarks,menu,navigation,tabs
 " 頁全体で検索語を強調表示する。
 set hlsearch
 " 検索時に大文字・小文字を無視する。
@@ -17,58 +26,55 @@ set ignorecase
 " exコマンドで新しい頁を開く際、常に新しいタブで開く。
 set newtab=all
 " exモード時にタイプ中でも自動補完する。
-set wildoptions=auto
+set wildmode="list:full"
 
 " ステータスバーの背景色をグレーにする。
 "hi StatusLine color:black; background:#BBB; font-weight:normal;
 " 補完候補の文字色を変更する。
 "hi CompDesc color:#272; width:50%;
 "hi Preview color:#44C;
-" ヒント表示を變更する。
-"hi Hint font-family:monospace; font-size:11pt; line-height:1; color:black; background-color:#5FF; border-color:ButtonShadow; border-width:1px; border-style:solid; padding:1px;
-
-" char-hints-mod2.js
-let g:hintsio="iO"
-let g:hintchars="HJKLASDFGYUIOPQWERTNMZXCVB"
-
-" direct_bookmark.js
-let g:direct_sbm_use_services_by_tag="h"
-let g:direct_sbm_use_services_by_post="dh"
-
-" ime_controller.js
-let g:ex_ime_mode="inactive"
-let g:textarea_ime_mode="inactive"
-
-" maine_coon.js
-let g:maine_coon_default = "ac"
+" ヒント表示を變更する。(Vimperatorスレ304)
+hi Hint <<EOC
+    background-color:khaki;
+    border-color:ButtonShadow;
+    border-style:solid;
+    border-width:0px;
+    color:#0F0F0F;
+    font-family: Menlo, Consolas, Monaco, monospace;
+    font-size:14px;
+    font-weight:bold;
+    padding:0px 2px 0px 2px;
+    position:absolute;
+    text-transform: uppercase;
+    z-index:5000;
+EOC
+" ヒント文字列を変更する。(Vimperatorスレ301)
+set hintchars=qxcvl@;:/.,
 
 set verbose=1
 javascript <<EOM
-// プロファイル名。
-let profile_name = liberator.profileName;
-
-// ウィンドウタイトルにプロファイル名を挿入する。
-let title_string = 'Vimp (' + profile_name + ')';
-liberator.modules.options.get('titlestring').set(title_string);
 
 // OS
-var ostype = function(){
-    if (liberator.has('Win32'))   return 'Win32';
-    if (liberator.has('MacUnix')) return 'MaxUnix';
-    if (liberator.has('Unix'))    return 'Unix';
-    return;
-}
+var isWin32   = liberator.has('Win32');
+var isMaxUnix = liberator.has('MacUnix');
+var isUnix    = liberator.has('Unix');
 
 // OS毎に異なる処理を行ふ。
-if (liberator.has("Win32")) {
-    let editor_path = 'C:\\\\Program\\ Files\\\\Vim\\\\vim72\\\\gvim.exe -f';
+if (isWin32) {
+    let editor_path = 'C:\\\\Program\\ Files\\\\Vim\\\\vim73\\\\gvim.exe -f';
     liberator.modules.options.get('editor').set(editor_path);
+
+    var rc_local_path = io.expandPath('~/_vimperatorrc.local');
+    var rc_js_path    = io.expandPath('~/_vimperatorrc.js');
 }
-else if (liberator.has("MacUnix")) {
+else if (isMaxUnix) {
 }
-else if (liberator.has("Unix")) {
+else if (isUnix) {
     let editor_path = '/usr/bin/gvim -f';
     liberator.modules.options.get('editor').set(editor_path);
+
+    var rc_local_path = io.expandPath('~/.vimperatorrc.local');
+    var rc_js_path    = io.expandPath('~/.vimperatorrc.js');
 }
 else {
     liberator.echo( "Other");
@@ -101,7 +107,10 @@ EOM
 " ウェブ魚拓
 command! wg :open javascript:window.location='http://megalodon.jp/?url='+escape(location.href);
 
-source! $HOME/.vimperatorrc.local
+javascript <<EOM
+io.source(rc_local_path);
+io.source(rc_js_path);
+EOM
 
 echo "$HOME/.vimperatorrc loaded"
 
