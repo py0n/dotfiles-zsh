@@ -1,0 +1,8 @@
+ScriptID SourceID Filename
+--------------------------
+152  3342  :AutoInstall: showmarks.vim
+294  10110 :AutoInstall: Align.vim
+556 15492 :AutoInstall: perl-support.zip
+1066 7618  :AutoInstall: cecutil.vim
+1924 7254  :AutoInstall: omniperl.zip
+2620 14464 :AutoInstall: neocomplcache.vba
