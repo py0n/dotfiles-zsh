@@ -1,0 +1,47 @@
+"1.0b6 (created: 2011/03/09 09:25:18)
+
+loadplugins '\.(js|penta)$'
+group user
+set guioptions=CMNTbcnrs
+
+" ヒント表示を變更する。(Vimperatorスレ304)
+hi Hint <<EOC
+    background-color:khaki;
+    border-color:ButtonShadow;
+    border-style:solid;
+    border-width:0px;
+    color:#0F0F0F;
+    font-family: Menlo, Consolas, Monaco, monospace;
+    font-size:14px;
+    font-weight:bold;
+    padding:0px 2px 0px 2px;
+    position:absolute;
+    text-transform: uppercase;
+    z-index:5000;
+EOC
+" ヒント文字列を変更する。(Vimperatorスレ301)
+set hintkeys=qxcvl@;:/.,
+
+" コマンドラインでIMEをOFF
+" http://blog.remora.cx/2010/11/pentadactyl-ime-controllerjs.html
+style -name commandline-ime chrome://* #dactyl-commandline-command input {ime-mode: inactive;}
+
+
+javascript <<EOM
+dactyl.modules.options.get('editor').set((function(){
+    if (util.OS.isWindows) {
+        return 'C:\\\\Program\\ Files\\\\Vim\\\\vim73\\\\gvim.exe -f';
+    } else { // util.OS.isUnix
+        return '/usr/bin/gvim -f';
+    }
+})());
+
+[".local", ".js"].map(function(ext){
+  let myRCFile = io.File(io.getRCFile().path + ext);
+  if (myRCFile.exists() && myRCFile.isFile()) {
+    io.source(myRCFile.path);
+  }
+});
+EOM
+
+" vim: set ft=pentadactyl:
