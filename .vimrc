@@ -17,8 +17,10 @@ set nocompatible
 " *NIX, Win32でのパスの違いを吸収する
 if has('win32')
 	let $CFGHOME=$VIM.'/vimfiles'
+    let $LOCALRC='~/_vimrc.local'
 elseif has('unix')
 	let $CFGHOME=$HOME.'/.vim'
+    let $LOCALRC='~/.vimrc.local'
 endif
 
 "======================================================================
@@ -460,6 +462,9 @@ endif
 if has('autocmd')
 	augroup EditJavaScript
 		autocmd!
+		autocmd FileType javascript set shiftwidth=2
+		autocmd FileType javascript set softtabstop=2
+		autocmd FileType javascript set tabstop=2
 		autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 	augroup END
 endif
@@ -610,6 +615,6 @@ command! ReloadVimrc source $MYVIMRC
 
 " 外部ファイルを読み込む
 " http://vim-users.jp/2009/12/hack108/
-if filereadable(expand('~/.vimrc.local'))
-	source ~/.vimrc.local
+if filereadable(expand($LOCALRC))
+	source $LOCALRC
 endif
