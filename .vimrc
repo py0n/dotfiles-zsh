@@ -551,6 +551,16 @@ map ,yt <ESC>:%! pythontidy<CR>
 map ,ytv <ESC>:%'<, '>! pythontidy<CR>
 
 "======================================================================
+" For R
+"======================================================================
+if has('autocmd')
+	augroup EditR
+		autocmd!
+		autocmd BufRead,BufNewFile *.R set filetype=r
+	augroup END
+endif
+
+"======================================================================
 " For Ruby (':h ft-ruby-omni' を参照)
 "======================================================================
 if has('ruby') && has('autocmd')
