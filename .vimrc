@@ -116,6 +116,9 @@ func! String2Hex(str)
 	return out
 endfunc
 
+" pathogen.vim
+call pathogen#runtime_append_all_bundles()
+
 "======================================================================
 " 編集関連
 "======================================================================
