@@ -435,7 +435,9 @@ endif
 if has('autocmd')
 	augroup EditHaskell
 		autocmd!
-		autocmd Bufenter *.hs compiler ghc
+		autocmd! BufRead,BufNewFile *.hs set filetype=haskell
+		autocmd FileType haskell compiler ghc
+		autocmd FileType haskell set nosmartindent
 	augroup END
 endif
 
