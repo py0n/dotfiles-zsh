@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/vim-alignta"]
+	path = .vim/bundle/vim-alignta
+	url = git://github.com/h1mesuke/vim-alignta.git
