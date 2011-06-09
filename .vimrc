@@ -469,6 +469,9 @@ endif
 if has('autocmd')
 	augroup EditJavaScript
 		autocmd!
+		autocmd FileType javascript set shiftwidth=2
+		autocmd FileType javascript set softtabstop=2
+		autocmd FileType javascript set tabstop=2
 		autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 	augroup END
 endif
