@@ -119,7 +119,7 @@ func! String2Hex(str)
 endfunc
 
 " pathogen.vim
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 "======================================================================
 " 編集関連
