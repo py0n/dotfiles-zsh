@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/SuperTab"]
 	path = .vim/bundle/SuperTab
 	url = git://github.com/vim-scripts/SuperTab-continued..git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
