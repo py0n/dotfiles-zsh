@@ -119,6 +119,7 @@ func! String2Hex(str)
 endfunc
 
 " pathogen.vim
+source $HOME/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 "======================================================================
