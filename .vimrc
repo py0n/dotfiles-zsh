@@ -16,7 +16,7 @@ endif
 set nocompatible
 " *NIX, Win32でのパスの違いを吸収する
 if has('win32')
-	let $CFGHOME=$VIM.'/vimfiles'
+	let $CFGHOME=$HOME.'/vimfiles'
     let $LOCALRC='~/_vimrc.local'
 elseif has('unix')
 	let $CFGHOME=$HOME.'/.vim'
@@ -119,7 +119,7 @@ func! String2Hex(str)
 endfunc
 
 " pathogen.vim
-source $HOME/.vim/bundle/vim-pathogen/autoload/pathogen.vim
+source $CFGHOME/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 "======================================================================
