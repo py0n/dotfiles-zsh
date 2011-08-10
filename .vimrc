@@ -388,7 +388,7 @@ if has("gui_running")
 endif
 
 "======================================================================
-" プラグイン設定。
+" プラグイン設定 (Plugin)
 "======================================================================
 " Align
 " http://nanasi.jp/articles/vim/align/align_vim_ext.html
@@ -396,6 +396,7 @@ endif
 let g:Align_xstrlen=3
 " AlignCtrlで変更した設定を初期状態に戻す
 command! -nargs=0 AlignReset call Align#AlignCtrl("default")
+
 " eregex.vim
 " http://vim.wikia.com/wiki/Perl_compatible_regular_expressions#eregex.vim
 " http://kaworu.jpn.org/kaworu/2010-11-28-1.php
@@ -404,10 +405,38 @@ nnoremap ./ /
 "nnoremap :s :S
 "nnoremap :g :G
 "nnoremap :v :V
+"
 " Kwbd
 " バッファを削除してもウィンドウのレイアウトを崩さない
 " http://nanasi.jp/articles/vim/kwbd_vim.html
 command! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
+
+" unite.vim
+" http://d.hatena.ne.jp/ruedap/20110110/vim_unite_plugin
+" 入力モードで開始する
+" let g:unite_enable_start_insert=1
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" " ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 "======================================================================
 " 以降、ファイルタイプ別の編集設定。
