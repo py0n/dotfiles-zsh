@@ -209,7 +209,11 @@ set incsearch
 " http://blog.blueblack.net/item_160
 " http://d.hatena.ne.jp/secondlife/20080311/1205205348
 "set grepprg=ack\ --perl
-set grepprg=ack
+if findfile("ack-grep", "/usr/bin;") == "/usr/bin/ack-grep"
+    set grepprg=ack-grep
+else
+    set grepprg=ack
+endif
 if has("autocmd")
 	augroup AckGrep
 		autocmd QuickfixCmdPost grep cw
@@ -410,6 +414,9 @@ nnoremap ./ /
 " バッファを削除してもウィンドウのレイアウトを崩さない
 " http://nanasi.jp/articles/vim/kwbd_vim.html
 command! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
 
 " unite.vim
 " http://d.hatena.ne.jp/ruedap/20110110/vim_unite_plugin
