@@ -421,7 +421,7 @@ let g:neocomplcache_enable_at_startup = 1
 " unite.vim
 " http://d.hatena.ne.jp/ruedap/20110110/vim_unite_plugin
 " 入力モードで開始する
-" let g:unite_enable_start_insert=1
+let g:unite_enable_start_insert=1
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " " ファイル一覧
