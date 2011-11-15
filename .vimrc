@@ -287,8 +287,9 @@ set showcmd
 set hlsearch
 "ステータスラインを常に表示
 set laststatus=2
-"ステータスラインに文字コードと改行文字を表示する
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{'['.GetB().']'}%=%l,%c%V%8P
+"ステータスラインに文字コード、改行文字およびメソッド名を表示する
+"要 current-func-info.vim
+set statusline=%<%f\ [%{cfi#get_func_name()}()]\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{'['.GetB().']'}%=%l,%c%V%8P
 " タイトルを表示
 set title
 
@@ -425,7 +426,7 @@ let g:neocomplcache_enable_at_startup = 1
 let g:unite_enable_start_insert=1
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" " ファイル一覧
+" ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 " レジスタ一覧
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
