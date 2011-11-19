@@ -16,7 +16,7 @@ endif
 set nocompatible
 " *NIX, Win32でのパスの違いを吸収する
 if has('win32')
-	let $CFGHOME=$VIM.'/vimfiles'
+	let $CFGHOME=$HOME.'/vimfiles'
     let $LOCALRC='~/_vimrc.local'
 elseif has('unix')
 	let $CFGHOME=$HOME.'/.vim'
@@ -119,7 +119,8 @@ func! String2Hex(str)
 endfunc
 
 " pathogen.vim
-call pathogen#runtime_append_all_bundles()
+source $CFGHOME/bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
 "======================================================================
 " 編集関連
@@ -208,7 +209,11 @@ set incsearch
 " http://blog.blueblack.net/item_160
 " http://d.hatena.ne.jp/secondlife/20080311/1205205348
 "set grepprg=ack\ --perl
-set grepprg=ack
+if findfile("ack-grep", "/usr/bin;") == "/usr/bin/ack-grep"
+    set grepprg=ack-grep
+else
+    set grepprg=ack
+endif
 if has("autocmd")
 	augroup AckGrep
 		autocmd QuickfixCmdPost grep cw
@@ -282,8 +287,9 @@ set showcmd
 set hlsearch
 "ステータスラインを常に表示
 set laststatus=2
-"ステータスラインに文字コードと改行文字を表示する
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{'['.GetB().']'}%=%l,%c%V%8P
+"ステータスラインに文字コード、改行文字およびメソッド名を表示する
+"要 current-func-info.vim
+set statusline=%<%f\ [%{cfi#get_func_name()}()]\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{'['.GetB().']'}%=%l,%c%V%8P
 " タイトルを表示
 set title
 
@@ -387,7 +393,7 @@ if has("gui_running")
 endif
 
 "======================================================================
-" プラグイン設定。
+" プラグイン設定 (Plugin)
 "======================================================================
 " Align
 " http://nanasi.jp/articles/vim/align/align_vim_ext.html
@@ -395,6 +401,7 @@ endif
 let g:Align_xstrlen=3
 " AlignCtrlで変更した設定を初期状態に戻す
 command! -nargs=0 AlignReset call Align#AlignCtrl("default")
+
 " eregex.vim
 " http://vim.wikia.com/wiki/Perl_compatible_regular_expressions#eregex.vim
 " http://kaworu.jpn.org/kaworu/2010-11-28-1.php
@@ -403,10 +410,52 @@ nnoremap ./ /
 "nnoremap :s :S
 "nnoremap :g :G
 "nnoremap :v :V
+"
 " Kwbd
 " バッファを削除してもウィンドウのレイアウトを崩さない
 " http://nanasi.jp/articles/vim/kwbd_vim.html
 command! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+
+" unite.vim
+" http://d.hatena.ne.jp/ruedap/20110110/vim_unite_plugin
+" http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_week
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+" unite.vim上でのキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+    " 単語単位からパス単位で削除するように変更
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    " ESCキーを2回押すと終了する
+    nmap <silent><buffer> <ESC><ESC> q
+    imap <silent><buffer> <ESC><ESC> <ESC>q
+endfunction
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 "======================================================================
 " 以降、ファイルタイプ別の編集設定。
