@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/SuperTab"]
 	path = .vim/bundle/SuperTab
 	url = git://github.com/vim-scripts/SuperTab-continued..git
+[submodule ".vim/bundle/current-func-info.vim"]
+	path = .vim/bundle/current-func-info.vim
+	url = git://github.com/tyru/current-func-info.vim.git
