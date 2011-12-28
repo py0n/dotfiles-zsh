@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/current-func-info.vim"]
 	path = .vim/bundle/current-func-info.vim
 	url = git://github.com/tyru/current-func-info.vim.git
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim.git
