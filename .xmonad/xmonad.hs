@@ -14,7 +14,9 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
+import XMonad.Util.EZConfig
 import XMonad.Util.Run(spawnPipe)
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -126,6 +128,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- Audio Volume
+    , ((modm              , 0x1008FF11 ), lowerVolume 3 >> return ())
+    , ((modm              , 0x1008FF13 ), raiseVolume 3 >> return ())
+    , ((modm              , 0x1008FF12 ), toggleMute    >> return ())
     ]
     ++
 
@@ -210,6 +217,7 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "Guake.py"       --> doFloat
+    , className =? "Stjerm"         --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
