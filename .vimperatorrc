@@ -18,7 +18,7 @@ set editor="gvim -f"
 " 頁を開く際に入力欄にフォーカスしない。
 set focuscontent
 " メニューバー(Menubar)だけ表示する。
-set gui=addons,nobookmarks,menu,navigation,tabs
+set gui=addons,nobookmarks,nomenu,navigation,notabs,statuslinetoolbar
 " 頁全体で検索語を強調表示する。
 set hlsearch
 " 検索時に大文字・小文字を無視する。
