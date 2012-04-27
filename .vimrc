@@ -487,12 +487,14 @@ if has('autocmd')
 	augroup EditHaskell
 		autocmd!
 		autocmd! BufRead,BufNewFile *.hs set filetype=haskell
-		autocmd FileType haskell compiler ghc
 		autocmd FileType haskell set nosmartindent
+		autocmd FileType haskell let hs_highlight_delimiters = 1
+		autocmd FileType haskell let hs_highlight_boolean = 1
+		autocmd FileType haskell let hs_highlight_types = 1
+		autocmd FileType haskell let hs_highlight_more_types = 1
+		autocmd FileType haskell let hs_highlight_debug = 1
 	augroup END
 endif
-
-let g:haddock_browser = "firefox"
 
 "======================================================================
 " For C (':h ft-c-omni' を参照)
@@ -567,8 +569,6 @@ if has('autocmd')
 		" Vimでカーソル下のPerlモジュールを開く
 		" http://d.hatena.ne.jp/spiritloose/20060817/1155808744
 		autocmd FileType perl set isfname-=-
-		" bonnu
-		autocmd BufWritePost,FileWritePost *.p[lm] !perl -MFindBin::libs -wc <afile>
 	augroup END
 endif
 
