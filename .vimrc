@@ -405,8 +405,8 @@ command! -nargs=0 AlignReset call Align#AlignCtrl("default")
 " eregex.vim
 " http://vim.wikia.com/wiki/Perl_compatible_regular_expressions#eregex.vim
 " http://kaworu.jpn.org/kaworu/2010-11-28-1.php
-nnoremap / :M/
-nnoremap ./ /
+"nnoremap / :M/
+"nnoremap ./ /
 "nnoremap :s :S
 "nnoremap :g :G
 "nnoremap :v :V
