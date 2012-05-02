@@ -13,9 +13,6 @@
 [submodule ".vim/bundle/omniperl"]
 	path = .vim/bundle/omniperl
 	url = git://github.com/vim-scripts/omniperl.git
-[submodule ".vim/bundle/cecutil"]
-	path = .vim/bundle/cecutil
-	url = git://github.com/vim-scripts/cecutil.git
 [submodule ".vim/bundle/SuperTab"]
 	path = .vim/bundle/SuperTab
 	url = git://github.com/vim-scripts/SuperTab-continued..git

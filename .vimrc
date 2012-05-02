@@ -132,6 +132,9 @@ call vundle#rc()
 " Alignta
 Bundle 'h1mesuke/vim-alignta.git'
 
+" cecutil
+Bundle ' vim-scripts/cecutil.git'
+
 " ShowMarks
 Bundle 'vim-scripts/ShowMarks.git'
 
