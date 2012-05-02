@@ -141,6 +141,9 @@ Bundle 'vim-scripts/ShowMarks.git'
 " Neocomplcache
 Bundle 'Shougo/neocomplcache.git'
 
+" Omniperl
+Bundle 'vim-scripts/omniperl.git'
+
 " perl-support
 Bundle 'vim-scripts/perl-support.vim.git'
 
