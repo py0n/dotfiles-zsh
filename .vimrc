@@ -118,9 +118,9 @@ func! String2Hex(str)
 	return out
 endfunc
 
-" pathogen.vim
-source $CFGHOME/bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+"" pathogen.vim
+"source $CFGHOME/bundle/vim-pathogen/autoload/pathogen.vim
+"call pathogen#infect()
 
 " Vundle
 " http://vim-users.jp/2011/04/hack215/
