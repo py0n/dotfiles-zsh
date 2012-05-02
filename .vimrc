@@ -138,6 +138,9 @@ Bundle 'vim-scripts/cecutil.git'
 " ctrp
 Bundle 'kien/ctrlp.vim.git'
 
+" current function info
+Bundle 'tyru/current-func-info.vim.git'
+
 " ShowMarks
 Bundle 'vim-scripts/ShowMarks.git'
 
