@@ -165,6 +165,9 @@ Bundle 'h1mesuke/unite-outline.git'
 " VCSCommand
 Bundle 'vim-scripts/vcscommand.vim.git'
 
+" vim-fugitive
+Bundle 'tpope/vim-fugitive.git'
+
 " vim-powerline
 Bundle 'Lokaltog/vim-powerline.git'
 
