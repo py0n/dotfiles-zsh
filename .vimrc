@@ -156,6 +156,9 @@ Bundle 'vim-scripts/vcscommand.vim.git'
 " vim-powerline
 Bundle 'Lokaltog/vim-powerline.git'
 
+" vim-ref
+Bundle 'thinca/vim-ref.git'
+
 set t_Co=256
 
 "======================================================================
