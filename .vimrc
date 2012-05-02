@@ -159,6 +159,9 @@ Bundle 'Lokaltog/vim-powerline.git'
 " vim-ref
 Bundle 'thinca/vim-ref.git'
 
+" vim-surround
+Bundle 'tpope/vim-surround.git'
+
 set t_Co=256
 
 "======================================================================
