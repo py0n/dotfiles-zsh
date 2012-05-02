@@ -129,6 +129,9 @@ filetype off
 set runtimepath+=$CFGHOME/vundle.git/
 call vundle#rc()
 
+" ShowMarks
+Bundle 'vim-scripts/ShowMarks.git'
+
 " unite.vim
 Bundle 'Shougo/unite.vim.git'
 
