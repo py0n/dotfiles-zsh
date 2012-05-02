@@ -133,7 +133,7 @@ call vundle#rc()
 Bundle 'h1mesuke/vim-alignta.git'
 
 " cecutil
-Bundle ' vim-scripts/cecutil.git'
+Bundle 'vim-scripts/cecutil.git'
 
 " ShowMarks
 Bundle 'vim-scripts/ShowMarks.git'
@@ -149,6 +149,9 @@ Bundle 'Shougo/unite.vim.git'
 
 " unite-outline
 Bundle 'h1mesuke/unite-outline.git'
+
+" VCSCommand
+Bundle 'vim-scripts/vcscommand.vim.git'
 
 " vim-powerline
 Bundle 'Lokaltog/vim-powerline.git'
