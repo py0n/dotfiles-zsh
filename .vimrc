@@ -135,6 +135,9 @@ Bundle 'h1mesuke/vim-alignta.git'
 " cecutil
 Bundle 'vim-scripts/cecutil.git'
 
+" ctrp
+Bundle 'kien/ctrlp.vim.git'
+
 " ShowMarks
 Bundle 'vim-scripts/ShowMarks.git'
 
