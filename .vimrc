@@ -147,6 +147,9 @@ Bundle 'vim-scripts/omniperl.git'
 " perl-support
 Bundle 'vim-scripts/perl-support.vim.git'
 
+" SuperTab
+Bundle 'vim-scripts/SuperTab-continued..git'
+
 " unite.vim
 Bundle 'Shougo/unite.vim.git'
 
