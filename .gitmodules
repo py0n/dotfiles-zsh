@@ -1,9 +1,3 @@
-[submodule ".vim/bundle/neocomplcache"]
-	path = .vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.git
-[submodule ".vim/bundle/perl-support.vim"]
-	path = .vim/bundle/perl-support.vim
-	url = git://github.com/vim-scripts/perl-support.vim.git
 [submodule ".vim/bundle/vcscommand.vim"]
 	path = .vim/bundle/vcscommand.vim
 	url = git://github.com/vim-scripts/vcscommand.vim.git
@@ -16,9 +10,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-alignta"]
-	path = .vim/bundle/vim-alignta
-	url = git://github.com/h1mesuke/vim-alignta.git
 [submodule ".vim/bundle/omniperl"]
 	path = .vim/bundle/omniperl
 	url = git://github.com/vim-scripts/omniperl.git

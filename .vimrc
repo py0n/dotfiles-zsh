@@ -129,8 +129,17 @@ filetype off
 set runtimepath+=$CFGHOME/vundle.git/
 call vundle#rc()
 
+" Alignta
+Bundle 'h1mesuke/vim-alignta.git'
+
 " ShowMarks
 Bundle 'vim-scripts/ShowMarks.git'
+
+" Neocomplcache
+Bundle 'Shougo/neocomplcache.git'
+
+" perl-support
+Bundle 'vim-scripts/perl-support.vim.git'
 
 " unite.vim
 Bundle 'Shougo/unite.vim.git'
