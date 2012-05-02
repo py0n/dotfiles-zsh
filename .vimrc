@@ -122,6 +122,24 @@ endfunc
 source $CFGHOME/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+" Vundle
+" http://vim-users.jp/2011/04/hack215/
+filetype off
+
+set runtimepath+=$CFGHOME/vundle.git/
+call vundle#rc()
+
+" unite.vim
+Bundle 'Shougo/unite.vim.git'
+
+" unite-outline
+Bundle 'h1mesuke/unite-outline.git'
+
+" vim-powerline
+Bundle 'Lokaltog/vim-powerline.git'
+
+set t_Co=256
+
 "======================================================================
 " 編集関連
 "======================================================================
