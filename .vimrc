@@ -312,6 +312,8 @@ if has('autocmd') && has('syntax')
 		autocmd InsertLeave * call OutInsertMode()
 	augroup END
 endif
+" 色テーマを設定する
+colorscheme DimRed
 "行番号を表示しない
 set nonumber
 " 音を鳴らさない、画面更新をしない
@@ -435,8 +437,6 @@ if has("gui_running")
 		set guifont=M+1VM+IPAG_circle:h10:cSHIFTJIS:w
 		set guifontwide=MS\ Gothic:h10:cSHIFTJIS:w
 	endif
-	" 色テーマを設定する
-	colorscheme evening
 	" 插入モードや檢索で日本語入力状態になるのを防ぐ。
 	" http://memo.officebrook.net/20080312.html
 	" http://d.hatena.ne.jp/pasela/20080709/gvim
