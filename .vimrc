@@ -129,53 +129,24 @@ filetype off
 set runtimepath+=$CFGHOME/vundle.git/
 call vundle#rc()
 
-" Alignta
-Bundle 'h1mesuke/vim-alignta.git'
-
-" cecutil
-Bundle 'vim-scripts/cecutil.git'
-
-" ctrp
-Bundle 'kien/ctrlp.vim.git'
-
-" current function info
-Bundle 'tyru/current-func-info.vim.git'
-
-" ShowMarks
-Bundle 'vim-scripts/ShowMarks.git'
-
-" Neocomplcache
-Bundle 'Shougo/neocomplcache.git'
-
-" Omniperl
-Bundle 'vim-scripts/omniperl.git'
-
-" perl-support
-Bundle 'vim-scripts/perl-support.vim.git'
-
-" SuperTab
-Bundle 'vim-scripts/SuperTab-continued..git'
-
-" unite.vim
-Bundle 'Shougo/unite.vim.git'
-
-" unite-outline
-Bundle 'h1mesuke/unite-outline.git'
-
-" VCSCommand
-Bundle 'vim-scripts/vcscommand.vim.git'
-
-" vim-fugitive
-Bundle 'tpope/vim-fugitive.git'
-
-" vim-powerline
 Bundle 'Lokaltog/vim-powerline.git'
-
-" vim-ref
+Bundle 'Shougo/neocomplcache.git'
+Bundle 'Shougo/unite.vim.git'
+Bundle 'h1mesuke/unite-outline.git'
+Bundle 'h1mesuke/vim-alignta.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'mojako/ref-sources.vim.git'
 Bundle 'thinca/vim-ref.git'
-
-" vim-surround
+Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround.git'
+Bundle 'tyru/current-func-info.vim.git'
+Bundle 'vim-scripts/ShowMarks.git'
+Bundle 'vim-scripts/SuperTab-continued..git'
+Bundle 'vim-scripts/cecutil.git' 
+Bundle 'vim-scripts/newspaper.vim.git'
+Bundle 'vim-scripts/omniperl.git'
+Bundle 'vim-scripts/perl-support.vim.git'
+Bundle 'vim-scripts/vcscommand.vim.git'
 
 set t_Co=256
 
@@ -312,8 +283,6 @@ if has('autocmd') && has('syntax')
 		autocmd InsertLeave * call OutInsertMode()
 	augroup END
 endif
-" 色テーマを設定する
-colorscheme DimRed
 "行番号を表示しない
 set nonumber
 " 音を鳴らさない、画面更新をしない
