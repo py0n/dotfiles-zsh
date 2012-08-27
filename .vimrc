@@ -604,7 +604,7 @@ let g:Perl_PerlcriticSeverity = 1
 " Perltidy (Perl Hacks #7)
 " http://perltidy.sourceforge.net/
 map ,pt <ESC>:%! perltidy<CR>
-map ,ptv <ESC>:%'<, '>! perltidy<CR>
+map ,ptv <ESC>:'<,'>! perltidy<CR>
 
 "======================================================================
 " For Python
