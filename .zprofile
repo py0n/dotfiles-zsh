@@ -5,9 +5,9 @@ source $HOME/.zsh.d/path.zsh
 source $HOME/.zsh.d/manpath.zsh
 source $HOME/.zsh.d/lscolors.zsh
 
-# PulseAudio
-if [ `which pulseaudio 2> /dev/null` ]; then
-	pulseaudio --start --log-target=syslog
-fi
+## PulseAudio
+#if [ `which pulseaudio 2> /dev/null` ]; then
+#	pulseaudio --start --log-target=syslog
+#fi
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
