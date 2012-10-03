@@ -1,0 +1,117 @@
+echo "$HOME/.vimperatorrc loading ..."
+
+" let
+
+let mapleader = ","
+
+" pluginloader
+
+let g:plugin_loader_roots = "~/scm/vimperator-plugins"
+
+" カラースキーム
+"colorscheme darkslate
+colorscheme indigo
+" URL(と検索語)、Firefoxの履歴、ローカルファイルで自動補完を行ふ。
+set complete=slf
+" エディタを指定する。
+set editor="gvim -f"
+" 頁を開く際に入力欄にフォーカスしない。
+set focuscontent
+" メニューバー(Menubar)だけ表示する。
+set gui=addons,nobookmarks,menu,navigation,tabs
+" 頁全体で検索語を強調表示する。
+set hlsearch
+" 検索時に大文字・小文字を無視する。
+set ignorecase
+" exコマンドで新しい頁を開く際、常に新しいタブで開く。
+set newtab=all
+" exモード時にタイプ中でも自動補完する。
+set wildmode="list:full"
+
+" ステータスバーの背景色をグレーにする。
+"hi StatusLine color:black; background:#BBB; font-weight:normal;
+" 補完候補の文字色を変更する。
+"hi CompDesc color:#272; width:50%;
+"hi Preview color:#44C;
+" ヒント表示を變更する。(Vimperatorスレ304)
+hi Hint <<EOC
+    background-color:khaki;
+    border-color:ButtonShadow;
+    border-style:solid;
+    border-width:0px;
+    color:#0F0F0F;
+    font-family: Menlo, Consolas, Monaco, monospace;
+    font-size:14px;
+    font-weight:bold;
+    padding:0px 2px 0px 2px;
+    position:absolute;
+    text-transform: uppercase;
+    z-index:5000;
+EOC
+" ヒント文字列を変更する。(Vimperatorスレ301)
+set hintchars=qxcvl@;:/.
+
+set verbose=1
+javascript <<EOM
+
+// OS
+var isWin32   = liberator.has('Win32');
+var isMaxUnix = liberator.has('MacUnix');
+var isUnix    = liberator.has('Unix');
+
+// OS毎に異なる処理を行ふ。
+if (isWin32) {
+    let editor_path = 'C:\\\\Program\\ Files\\\\Vim\\\\vim73\\\\gvim.exe -f';
+    liberator.modules.options.get('editor').set(editor_path);
+
+    var rc_local_path = io.expandPath('~/_vimperatorrc.local');
+    var rc_js_path    = io.expandPath('~/_vimperatorrc.js');
+}
+else if (isMaxUnix) {
+}
+else if (isUnix) {
+    let editor_path = '/usr/bin/gvim -f';
+    liberator.modules.options.get('editor').set(editor_path);
+
+    var rc_local_path = io.expandPath('~/.vimperatorrc.local');
+    var rc_js_path    = io.expandPath('~/.vimperatorrc.js');
+}
+else {
+    liberator.echo( "Other");
+}
+
+// chaika
+config.dialogs.push([
+    'chaika-side',
+    'Chaika',
+    function() openWebPanel('chaika', 'chrome://chaika/content/bbsmenu/page.xul'),
+]);
+config.dialogs.push([
+    'chaika',
+    'Chaika',
+    function() openUILinkIn('chrome://chaika/content/bbsmenu/page.xul', 'tab')
+]);
+// Foxage2ch
+config.dialogs.push([
+    'foxage2ch-side',
+    'Foxage2ch',
+    function() openWebPanel('foxage2ch', 'chrome://foxage2ch/content/foxage2ch.xul')
+]);
+config.dialogs.push([
+    'foxage2ch',
+    'Foxage2ch',
+    function() openUILinkIn('chrome://foxage2ch/content/foxage2ch.xul', 'tab')
+]);
+EOM
+
+" ウェブ魚拓
+command! wg :open javascript:window.location='http://megalodon.jp/?url='+escape(location.href);
+
+javascript <<EOM
+io.source(rc_local_path);
+io.source(rc_js_path);
+EOM
+
+echo "$HOME/.vimperatorrc loaded"
+
+" vim: set ft=vimperator:
