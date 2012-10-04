@@ -17,6 +17,12 @@ lv
 
 * .lv
 
+screen
+======
+[screen][screen]用のファイルは以下の通り。
+
+* .screenrc
+
 zsh
 ===
 
@@ -39,4 +45,5 @@ zsh
 
 [ack]: http://search.cpan.org/~petdance/ack/ "Andy Lester / ack - search.cpan.org"
 [lv]: http://www.ff.iij4u.or.jp/~nrt/lv/ "LV Homepage"
+[screen]: http://www.gnu.org/software/screen/ "GNU Screen - GNU Project - Free Software Foundation"
 [zsh]: http://www.zsh.org/ "Zsh"
