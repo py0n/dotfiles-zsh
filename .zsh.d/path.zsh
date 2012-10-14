@@ -10,7 +10,7 @@ typeset -U path
 #            /: ディレクトリのみ残す。
 path=(
     # 自分用
-    $HOME/local/bin(N-/)
+    $HOME/.local/bin(N-/)
     # システム用
     /usr/local/**/bin(N-/)
     /usr/bin(N-/)
