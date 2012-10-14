@@ -2,6 +2,9 @@
 # http://journal.mycom.co.jp/column/zsh/009/index.html
 case "$TERM" in
     kterm*|xterm*|screen*)
+        if [ -f $HOME/.dir_colors ]; then
+            eval `dircolors $HOME/.dir_colors`
+        fi
         if [ -z "$LSCOLORS" ]; then
             export LSCOLORS=exfxcxdxbxegedabagacad
             zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
