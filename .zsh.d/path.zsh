@@ -11,6 +11,7 @@ typeset -U path
 path=(
     # 自分用
     $HOME/.local/bin(N-/)
+    $HOME/.cabal/bin(N-/)
     # システム用
     /usr/local/**/bin(N-/)
     /usr/bin(N-/)
