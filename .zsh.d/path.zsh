@@ -9,10 +9,11 @@ typeset -U path
 #            -: シンボリックリンク先のパスを評価。
 #            /: ディレクトリのみ残す。
 path=(
+    # cabal
+    $HOME/cabal-dev/bin(N-/)
+    $HOME/.cabal/bin(N-/)
     # 自分用
     $HOME/.local/bin(N-/)
-    # cabal
-    $HOME/.cabal/bin(N-/)
     # システム用
     /usr/local/**/bin(N-/)
     /usr/bin(N-/)
