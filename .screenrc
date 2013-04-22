@@ -3,7 +3,7 @@ autodetach	on
 defhstatus	"^En:^Et"
 defscrollback	50000
 defutf8	on
-escape	^T^T
+escape	^t^t
 hardstatus	on
 hardstatus	alwayslastline	"%Y-%m-%d %c:%s %w"
 shell	-$SHELL

@@ -24,7 +24,7 @@ case "$OSTYPE" in
         ;;
 esac
 
-h () 		{history $* | lv}
+h () 		{history "$*" | lv}
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 
