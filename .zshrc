@@ -30,12 +30,9 @@ setopt sh_word_split
 
 source $HOME/.zsh.d/aliases.zsh
 source $HOME/.zsh.d/bindkeys.zsh
+source $HOME/.zsh.d/chpwd.zsh
 source $HOME/.zsh.d/completions.zsh
-
-source $HOME/.zsh.d/sshagent.zsh
 source $HOME/.zsh.d/prompt.zsh
-
-cdpath=(~)
-chpwd_functions=($chpwd_functions dirs)
+source $HOME/.zsh.d/sshagent.zsh
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
