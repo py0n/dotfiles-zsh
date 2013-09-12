@@ -1,10 +1,10 @@
 # ssh-agent
-# http://blog.gcd.org/archives/50713097.html
 
 AGENT=${HOME}/.ssh-agent-${USER}
 
 UNAME=`uname`
 case "$UNAME" in
+    # http://cuviper.github.io/ssh-pageant/
     CYGWIN*)
         SSH_PAGEANT=`which ssh-pageant`
 
@@ -20,6 +20,7 @@ case "$UNAME" in
         ;;
 esac
 
+# http://blog.gcd.org/archives/50713097.html
 if [ -S "$SSH_AUTH_SOCK" -a ! -L "$SSH_AUTH_SOCK" ]; then
     ln -sfn $SSH_AUTH_SOCK $AGENT && export SSH_AUTH_SOCK=$AGENT
 elif [ -S "$AGENT" ]; then
