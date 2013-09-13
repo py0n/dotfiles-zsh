@@ -12,8 +12,10 @@ manpath=(
     # 自分用
     $HOME/local/**/man(N-/)
     # システム用
+    /usr/local/man(N-/)
+    /usr/man(N-/)
+    /usr/share/man(N-/)
     /var/**/man(N-/)
-    /usr/**/man(N-/)
 )
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
