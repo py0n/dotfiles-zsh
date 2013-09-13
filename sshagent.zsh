@@ -7,11 +7,9 @@ case "$UNAME" in
     # http://cuviper.github.io/ssh-pageant/
     CYGWIN*)
         SSH_PAGEANT=`which ssh-pageant`
+        SSH_PAGEANT_SOCK=$HOME/.ssh-pagent.sock
 
-        killall -0 $SSH_PAGEANT 2>/dev/null && killall $SSH_PAGEANT
-
-        eval $($SSH_PAGEANT -q)
-        ln -sfn $SSH_AUTH_SOCK $AGENT && export SSH_AUTH_SOCK=$AGENT
+        eval $($SSH_PAGEANT -q -r -a $SSH_PAGEANT_SOCK)
 
         #trap 'eval $($SSH_PAGEANT -qk 2>/dev/null)' EXIT
         trap 'logout' HUP
