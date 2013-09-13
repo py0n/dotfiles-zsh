@@ -35,4 +35,8 @@ source $HOME/.zsh.d/completions.zsh
 source $HOME/.zsh.d/prompt.zsh
 source $HOME/.zsh.d/sshagent.zsh
 
+# zprofモジュールが有効ならプロファイルを表示する。
+if which zprof >/dev/null; then
+    zprof
+fi
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
