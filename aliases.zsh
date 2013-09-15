@@ -11,6 +11,8 @@ alias lv="$PAGER" # lvがなくてもlvでページャーを起動する。
 alias move='mv -i'
 alias po='popd'
 alias pu='pushd'
+alias zprofoff="rm $HOME/.zprofenable"
+alias zprofon="ln -s dummy $HOME/.zprofenable"
 
 # Alias and functions
 case "$OSTYPE" in
