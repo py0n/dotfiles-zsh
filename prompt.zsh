@@ -16,12 +16,6 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
-# Set Shell variable
-# WORDCHARS=$WORDCHARS:s,/,,
-HISTSIZE=1000000
-HISTFILE=~/.zhistory
-SAVEHIST=1000000
-
 case "$UID" in
 0)
 	PROMPT='%B%m{%n}%%%b '
