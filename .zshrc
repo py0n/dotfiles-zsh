@@ -4,7 +4,6 @@
 
 # Set shell options
 # 有効にしてあるのは副作用の少ないもの
-setopt always_last_prompt
 setopt auto_cd
 setopt auto_pushd
 setopt auto_name_dirs
@@ -17,7 +16,6 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt list_types
 setopt no_beep
-setopt prompt_subst
 setopt pushd_ignore_dups
 setopt sh_word_split
 # 便利だが副作用の強いものはコメントアウト
