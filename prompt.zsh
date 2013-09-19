@@ -8,6 +8,7 @@
 
 setopt always_last_prompt # 補完のときプロンプトの位置を変えない
 setopt prompt_subst       # プロンプトでエスケープシーケンスを有効に
+setopt transient_rprompt  # コマンド実行rprompt消去
 
 autoload -Uz add-zsh-hook     # hookを有効に。
 autoload -Uz colors && colors # プロンプトのカラー表示を有効
