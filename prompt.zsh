@@ -1,8 +1,10 @@
+# http://blog.8-p.info/2009/01/red-prompt
 # http://d.hatena.ne.jp/kakurasan/20100407/p1
 # http://kitak.hatenablog.jp/entry/2013/05/25/103059
 # http://less.carbonfairy.org/post/17714419750
 # http://usami-k.seesaa.net/article/253493442.html
 # http://www.clear-code.com/blog/2011/9/5.html
+# http://www.slideshare.net/tetutaro/zsh-20923001
 
 setopt always_last_prompt # 補完のときプロンプトの位置を変えない
 setopt prompt_subst       # プロンプトでエスケープシーケンスを有効に
@@ -64,10 +66,21 @@ case "$UID" in
 	PATH=/bin:/sbin:/usr/bin:/usr/sbin
 	;;
 *)
-	local _prompt=$'%{${fg[yellow]}%}%n%{${reset_color}%}%{${fg[green]}%}@%m%{${reset_color}%} %% '
-	local _rprompt=$'%{${fg[cyan]}%}[%~]%{${reset_color}%}'
-	local _lf=$'\n'
-    PROMPT="%3(~|%1(v|%F{green}%1v%f|)${_rprompt}${_lf}|)${_prompt}"
-    RPROMPT="%3(~||%1(v|%F{green}%1v%f|)${_rprompt})"
+    # 直前のコマンドが失敗時にステータスを表示
+    local _exitst=$'%(?..%F{red}(%0?%) %f)'
+    local _prompt=$'%F{yellow}%n%f%F{green}@%m%f ${_exitst}%# '
+
+    # psvar[1]が存在すれば緑色で表示 (See `man zshmics')
+    local _vcs=$'%1(v.%F{green}%1v%f.)'
+    local _cwd=$'%F{cyan}[%~]%f'
+    local _rprompt='${_vcs}${_cwd}'
+
+    local _lf=$'\n'
+    # ディレクトリに三階層目が存在すれば
+    # ${_rprompt}と${_lf}を表示
+    PROMPT="%3(~.${_rprompt}${_lf}.)${_prompt}"
+    # ディレクトリに三階層目が存在しなければ
+    # ${_rpromt}を表示
+    RPROMPT="%3(~..${_rprompt})"
 	;;
 esac
