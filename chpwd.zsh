@@ -1,9 +1,9 @@
 # http://qiita.com/yuyuchu3333/items/b10542db482c3ac8b059
 # chdir時にlsを實行する。
 
-typeset -ga chpwd_functions
+autoload -Uz add-zsh-hook # hookを有効に。
 
-ls_abbrev() {
+my_ls_abbrev() {
     # -a : Do not ignore entries starting with ..
     # -C : Force multi-column output.
     # -F : Append indicator (one of */=>@|) to entries.
@@ -36,5 +36,6 @@ ls_abbrev() {
     fi
 }
 
-cdpath=(~)
-chpwd_functions+=ls_abbrev
+cdpath=(~) # cdコマンドに対する検索対象に$HOMEを追加。
+
+add-zsh-hook chpwd my_ls_abbrev
