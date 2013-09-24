@@ -4,12 +4,9 @@
 
 # Set shell options
 # 有効にしてあるのは副作用の少ないもの
-setopt auto_cd
-setopt auto_pushd
 setopt auto_name_dirs
 setopt auto_param_keys
 setopt auto_remove_slash
-setopt cdable_vars
 setopt extended_glob
 setopt extended_history
 setopt hist_ignore_dups

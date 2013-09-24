@@ -1,6 +1,10 @@
 # http://qiita.com/yuyuchu3333/items/b10542db482c3ac8b059
 # chdir時にlsを實行する。
 
+setopt auto_cd # ディレクトリ名だけでもcd可。
+setopt auto_pushd
+setopt cdable_vars
+
 autoload -Uz add-zsh-hook # hookを有効に。
 
 my_ls_abbrev() {
