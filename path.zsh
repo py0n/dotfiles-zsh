@@ -13,6 +13,7 @@ path=(
     $HOME/cabal-dev/bin(N-/)
     $HOME/.cabal/bin(N-/)
     # 自分用
+    $HOME/local/bin(N-/)
     $HOME/.local/bin(N-/)
     # システム用
     /usr/local/**/bin(N-/)

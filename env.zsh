@@ -1,5 +1,12 @@
 # http://www.clear-code.com/blog/2011/9/5.html
 
+# set shell variable
+# WORDCHARS=$WORDCHARS:s,/,,
+HISTSIZE=1000000
+HISTFILE=~/.zhistory
+SAVEHIST=1000000
+
+# set enviroment variables
 #export BLOCKSIZE=k
 export JLESSCHARSET=japanese
 export LANG=ja_JP.UTF-8
