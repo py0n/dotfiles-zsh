@@ -7,7 +7,7 @@ case "$UNAME" in
     # http://cuviper.github.io/ssh-pageant/
     CYGWIN*)
         SSH_PAGEANT=`which ssh-pageant`
-        SSH_PAGEANT_SOCK=$HOME/.ssh-pagent.sock
+        SSH_PAGEANT_SOCK=$HOME/.ssh-pageant.sock
 
         eval $($SSH_PAGEANT -q -r -a $SSH_PAGEANT_SOCK)
 
