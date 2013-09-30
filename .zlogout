@@ -12,3 +12,5 @@ case "$UNAME" in
     *)
         ;;
 esac
+
+# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
