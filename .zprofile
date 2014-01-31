@@ -4,7 +4,7 @@ if [ -h $HOME/.zprofenable ]; then
 fi
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 fpath=(
-    $HOME/.zsh.d/functions/*(N-/)
+    $HOME/.zsh.d/functions(N-/)
     $fpath
 )
 #
