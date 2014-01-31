@@ -3,15 +3,11 @@ if [[ -h $HOME/.zprofenable ]]; then
     zmodload zsh/zprof && zprof
 fi
 
-# http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
-fpath=(
-    $HOME/.zsh.d/functions(N-/)
-    $fpath
-)
-autoload -Uz config-env      && config-env
-autoload -Uz config-path     && config-path
-autoload -Uz config-manpath  && config-manpath
-autoload -Uz config-lscolors && config-lscolors
+source $ZDOTDIR/sources/env
+source $ZDOTDIR/sources/fpath
+source $ZDOTDIR/sources/path
+source $ZDOTDIR/sources/manpath
+source $ZDOTDIR/sources/lscolors
 
 ## PulseAudio
 #if [ `which pulseaudio 2> /dev/null` ]; then
