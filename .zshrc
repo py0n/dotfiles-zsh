@@ -27,6 +27,7 @@ source $HOME/.zsh.d/aliases.zsh
 source $HOME/.zsh.d/bindkeys.zsh
 source $HOME/.zsh.d/chpwd.zsh
 source $HOME/.zsh.d/completions.zsh
+source $HOME/.zsh.d/git.zsh
 source $HOME/.zsh.d/prompt.zsh
 source $HOME/.zsh.d/sshagent.zsh
 
