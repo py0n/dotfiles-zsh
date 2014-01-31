@@ -27,9 +27,11 @@ source $HOME/.zsh.d/aliases.zsh
 source $HOME/.zsh.d/bindkeys.zsh
 source $HOME/.zsh.d/chpwd.zsh
 source $HOME/.zsh.d/completions.zsh
-source $HOME/.zsh.d/git.zsh
 source $HOME/.zsh.d/prompt.zsh
 source $HOME/.zsh.d/sshagent.zsh
+
+# http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
+autoload -Uz git-config && git-config
 
 # zprofモジュールが有効ならプロファイルを表示する。
 if which zprof > /dev/null 2>&1; then

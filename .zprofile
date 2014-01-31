@@ -2,6 +2,11 @@
 if [ -h $HOME/.zprofenable ]; then
     zmodload zsh/zprof && zprof
 fi
+# http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
+fpath=(
+    $HOME/.zsh.d/functions/*(N-/)
+    $fpath
+)
 #
 source $HOME/.zsh.d/env.zsh
 source $HOME/.zsh.d/path.zsh
