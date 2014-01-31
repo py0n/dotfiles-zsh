@@ -8,7 +8,6 @@ if [[ -h $HOME/.zprofenable ]]; then
 fi
 
 source $ZDOTDIR/sources/env
-source $ZDOTDIR/sources/fpath
 source $ZDOTDIR/sources/path
 source $ZDOTDIR/sources/manpath
 source $ZDOTDIR/sources/lscolors
