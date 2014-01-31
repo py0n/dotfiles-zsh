@@ -2,6 +2,8 @@
 # http://www.clear-code.com/blog/2011/9/5.html
 # http://www.gentei.org/~yuuji/support/zsh/files/zshrc
 
+debug_echo "(begin) .zshrc"
+
 # Set shell options
 # 有効にしてあるのは副作用の少ないもの
 setopt auto_name_dirs
@@ -37,5 +39,7 @@ autoload -Uz config-sshagent    && config-sshagent
 if which zprof > /dev/null 2>&1; then
     zprof
 fi
+
+debug_echo "(end) .zshrc"
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4

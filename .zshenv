@@ -32,4 +32,13 @@
 
 export ZDOTDIR=$HOME/.zsh.d
 
+debug_echo () {
+    if [[ -n $ZDEBUG ]]; then
+        echo $* > /dev/stderr
+    fi
+}
+
+debug_echo '(begin) .zshenv'
+debug_echo '(end) .zshenv'
+
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
