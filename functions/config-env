@@ -1,4 +1,5 @@
 # http://www.clear-code.com/blog/2011/9/5.html
+# http://koyudoon.hatenablog.com/entry/20120205/1328401222
 
 # set shell variable
 # WORDCHARS=$WORDCHARS:s,/,,
@@ -14,12 +15,12 @@ export LESS='-iscj5'
 export SVN_SSH='ssh'
 
 # 優先的にvimを使用する
-if type vim > /dev/null 2>&1; then
+if [[ -x `whence -p vim` ]]; then
     export EDITOR=vim
 fi
 
 # 優先的にlvを使用する
-if type lv > /dev/null 2>&1; then
+if [[ -x `whence -p vim` ]]; then
     export PAGER=lv
 else
     export PAGER=less

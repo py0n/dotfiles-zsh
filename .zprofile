@@ -1,17 +1,17 @@
 # http://www.clear-code.com/blog/2011/9/5.html
-if [ -h $HOME/.zprofenable ]; then
+if [[ -h $HOME/.zprofenable ]]; then
     zmodload zsh/zprof && zprof
 fi
+
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 fpath=(
     $HOME/.zsh.d/functions(N-/)
     $fpath
 )
-#
-source $HOME/.zsh.d/env.zsh
-source $HOME/.zsh.d/path.zsh
-source $HOME/.zsh.d/manpath.zsh
-source $HOME/.zsh.d/lscolors.zsh
+autoload -Uz config-env      && config-env
+autoload -Uz config-path     && config-path
+autoload -Uz config-manpath  && config-manpath
+autoload -Uz config-lscolors && config-lscolors
 
 ## PulseAudio
 #if [ `which pulseaudio 2> /dev/null` ]; then
