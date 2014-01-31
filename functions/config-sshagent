@@ -1,13 +1,13 @@
 # ssh-agent
 
-AGENT=${HOME}/.ssh-agent-${USER}
+local AGENT=${HOME}/.ssh-agent-${USER}
+local UNAME=`uname`
 
-UNAME=`uname`
 case "$UNAME" in
     # http://cuviper.github.io/ssh-pageant/
     CYGWIN*)
-        SSH_PAGEANT=`which ssh-pageant`
-        SSH_PAGEANT_SOCK=$HOME/.ssh-pageant.sock
+        local SSH_PAGEANT=`whence ssh-pageant`
+        local SSH_PAGEANT_SOCK=$HOME/.ssh-pageant.sock
 
         eval $($SSH_PAGEANT -q -r -a $SSH_PAGEANT_SOCK)
 
@@ -19,9 +19,9 @@ case "$UNAME" in
 esac
 
 # http://blog.gcd.org/archives/50713097.html
-if [ -S "$SSH_AUTH_SOCK" -a ! -L "$SSH_AUTH_SOCK" ]; then
+if [[ -S "$SSH_AUTH_SOCK" && ! -L "$SSH_AUTH_SOCK" ]]; then
     ln -sfn $SSH_AUTH_SOCK $AGENT && export SSH_AUTH_SOCK=$AGENT
-elif [ -S "$AGENT" ]; then
+elif [[ -S "$AGENT" ]]; then
     export SSH_AUTH_SOCK=$AGENT
 else
     echo "no ssh-agent"

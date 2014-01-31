@@ -24,7 +24,6 @@ setopt sh_word_split
 #setopt sun_keyboard_hack
 
 source $HOME/.zsh.d/prompt.zsh
-source $HOME/.zsh.d/sshagent.zsh
 
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 autoload -Uz config-aliases     && config-aliases
@@ -32,6 +31,7 @@ autoload -Uz config-bindkeys    && config-bindkeys
 autoload -Uz config-chpwd       && config-chpwd
 autoload -Uz config-completions && config-completions
 autoload -Uz config-git         && config-git
+autoload -Uz config-sshagent    && config-sshagent
 
 # zprofモジュールが有効ならプロファイルを表示する。
 if which zprof > /dev/null 2>&1; then
