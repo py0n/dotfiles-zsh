@@ -15,12 +15,12 @@ export LESS='-iscj5'
 export SVN_SSH='ssh'
 
 # 優先的にvimを使用する
-if [[ -x `whence -p vim` ]]; then
+if [[ -x `whence vim` ]]; then
     export EDITOR=vim
 fi
 
 # 優先的にlvを使用する
-if [[ -x `whence -p vim` ]]; then
+if [[ -x `whence vim` ]]; then
     export PAGER=lv
 else
     export PAGER=less
