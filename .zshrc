@@ -23,13 +23,13 @@ setopt sh_word_split
 #setopt share_history
 #setopt sun_keyboard_hack
 
-source $HOME/.zsh.d/chpwd.zsh
 source $HOME/.zsh.d/prompt.zsh
 source $HOME/.zsh.d/sshagent.zsh
 
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 autoload -Uz config-aliases     && config-aliases
 autoload -Uz config-bindkeys    && config-bindkeys
+autoload -Uz config-chpwd       && config-chpwd
 autoload -Uz config-completions && config-completions
 autoload -Uz config-git         && config-git
 
