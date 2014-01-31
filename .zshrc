@@ -23,18 +23,19 @@ setopt sh_word_split
 #setopt share_history
 #setopt sun_keyboard_hack
 
-source $HOME/.zsh.d/aliases.zsh
-source $HOME/.zsh.d/bindkeys.zsh
 source $HOME/.zsh.d/chpwd.zsh
-source $HOME/.zsh.d/completions.zsh
 source $HOME/.zsh.d/prompt.zsh
 source $HOME/.zsh.d/sshagent.zsh
 
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
-autoload -Uz config-git && config-git
+autoload -Uz config-aliases     && config-aliases
+autoload -Uz config-bindkeys    && config-bindkeys
+autoload -Uz config-completions && config-completions
+autoload -Uz config-git         && config-git
 
 # zprofモジュールが有効ならプロファイルを表示する。
 if which zprof > /dev/null 2>&1; then
     zprof
 fi
+
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4

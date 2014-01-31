@@ -18,4 +18,4 @@ if [[ -x `whence git` && -x `whence diff-highlight` && -x `whence less` ]]; then
     git config --global --replace-all pager.show "$PAGER"
 fi
 
-# vim: ft=zsh
+# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
