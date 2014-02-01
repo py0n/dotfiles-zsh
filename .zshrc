@@ -27,6 +27,22 @@ setopt sh_word_split
 
 source $ZDOTDIR/prompt.zsh
 
+# 履歴設定
+HISTFILE=$HOME/.zhistory
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# 陳腐な履歴は殘さず。
+# http://d.hatena.ne.jp/UDONCHAN/20100618/1276842846
+add-my-history() {
+    unsetopt sh_word_split # sh_word_splitが有効だとエラーになる。
+    local line=${1%%$'\n'}
+    local cmd=${line%% *}
+    [[ ${cmd} != (cd|exit|history|l|l[asl]|rm) ]]
+}
+
+add-zsh-hook zshaddhistory add-my-history
+
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 
 typeset -U fpath # 重複したパスを除外する
