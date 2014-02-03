@@ -10,7 +10,7 @@ if [[ -n "$(git remote 2>/dev/null)" ]]; then
         fi
     done
     # pushしていないcommitがあることを示す文字列
-    if [[ -n $is_pushed ]]; then
+    if [[ -z $is_pushed ]]; then
         my_git_info_push=':P'
     fi
 fi
