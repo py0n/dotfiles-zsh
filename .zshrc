@@ -85,6 +85,34 @@ autoload -Uz git-setup          && git-setup
 autoload -Uz zman
 
 # {{{ プロンプト関連
+# http://blog.8-p.info/2009/01/red-prompt
+# http://d.hatena.ne.jp/kakurasan/20100407/p1
+# http://kitak.hatenablog.jp/entry/2013/05/25/103059
+# http://less.carbonfairy.org/post/17714419750
+# http://usami-k.seesaa.net/article/253493442.html
+# http://www.clear-code.com/blog/2011/9/5.html
+# http://www.slideshare.net/tetutaro/zsh-20923001
+
+setopt always_last_prompt # 補完のときプロンプトの位置を変えない
+setopt prompt_subst       # プロンプトでエスケープシーケンスを有効に
+setopt transient_rprompt  # コマンド実行rprompt消去
+
+autoload -Uz colors && colors # プロンプトのカラー表示を有効
+
+# VCS
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s/%b)'
+zstyle ':vcs_info:*' actionformats '(%s/%b|%a)'
+# commitしていない変更をチェックする
+zstyle ":vcs_info:git:*" check-for-changes true
+# gitリポジトリに対して、変更情報とリポジトリ情報を表示する
+zstyle ":vcs_info:git:*" formats "%s/%b%c%u"
+# gitリポジトリに対して、コンフリクトなどの情報を表示する
+zstyle ":vcs_info:git:*" actionformats "%s/%b:%a%c%u"
+# addしていない変更があることを示す文字列
+zstyle ":vcs_info:git:*" unstagedstr ":U"
+# commitしていないstageがあることを示す文字列
+zstyle ":vcs_info:git:*" stagedstr ":S"
 
 source $ZDOTDIR/prompt.zsh
 
