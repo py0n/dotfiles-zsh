@@ -56,7 +56,28 @@ path=(
 )
 # }}}
 
-source $ZDOTDIR/sources/manpath
+# {{{ マニュアルパス関連 (manpath)
+# http://www.clear-code.com/blog/2011/9/5.html
+# 重複したパスを除外する
+typeset -U manpath
+
+# (N-/) 存在しないディレクトリは登録しない。
+#    パス(...): ...という条件にマッチするパスのみ残す。
+#            N: NULL_GLOBオプションを設定。
+#               globがマッチしなかったり存在しないパスを無視する。
+#            -: シンボリックリンク先のパスを評価。
+#            /: ディレクトリのみ残す。
+manpath=(
+    # 自分用
+    $HOME/local/**/man(N-/)
+    # システム用
+    /usr/local/man(N-/)
+    /usr/man(N-/)
+    /usr/share/man(N-/)
+    /var/**/man(N-/)
+)
+# }}}
+
 source $ZDOTDIR/sources/lscolors
 
 ## PulseAudio
