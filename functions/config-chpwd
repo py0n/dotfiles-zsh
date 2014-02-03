@@ -1,12 +1,6 @@
 # http://qiita.com/yuyuchu3333/items/b10542db482c3ac8b059
 # chdir時にlsを實行する。
 
-setopt auto_cd # ディレクトリ名だけでもcd可。
-setopt auto_pushd
-setopt cdable_vars
-
-autoload -Uz add-zsh-hook # hookを有効に。
-
 my_ls_abbrev() {
     # -a : Do not ignore entries starting with ..
     # -C : Force multi-column output.
@@ -39,8 +33,6 @@ my_ls_abbrev() {
         echo "$ls_result"
     fi
 }
-
-cdpath=(~) # cdコマンドに対する検索対象に$HOMEを追加。
 
 add-zsh-hook chpwd my_ls_abbrev
 
