@@ -39,8 +39,6 @@ cdpath=(
 )
 # }}}
 
-source $ZDOTDIR/prompt.zsh
-
 # 履歴設定
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000000
@@ -85,7 +83,9 @@ autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 
 autoload -Uz zman
 
-# プロンプト
+# {{{ プロンプト関連
+
+source $ZDOTDIR/prompt.zsh
 
 case "$UID" in
 0)
@@ -112,6 +112,7 @@ case "$UID" in
     RPROMPT="%3(~..${_rprompt})"
     ;;
 esac
+# }}}
 
 # zprofモジュールが有効ならプロファイルを表示する。
 if which zprof > /dev/null 2>&1; then
