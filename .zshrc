@@ -37,9 +37,12 @@ cdpath=(
     ~
     ~/scm(N-/)
 )
+
+# cdの後でlsを実行
+autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 # }}}
 
-# 履歴設定
+# {{{ 履歴関連
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -54,6 +57,7 @@ add-my-history() {
 }
 
 add-zsh-hook zshaddhistory add-my-history
+# }}}
 
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 
@@ -77,9 +81,6 @@ autoload -Uz config-aliases     && config-aliases
 autoload -Uz config-bindkeys    && config-bindkeys
 autoload -Uz config-completions && config-completions
 autoload -Uz git-setup          && git-setup
-
-# cdの後でlsを実行
-autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 
 autoload -Uz zman
 
@@ -121,4 +122,4 @@ fi
 
 debug_echo "(end) .zshrc"
 
-# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
