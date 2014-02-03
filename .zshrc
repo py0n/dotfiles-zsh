@@ -123,7 +123,14 @@ alias -s {odt,ods,odp,doc,xls,ppt}=soffice
 alias -s {tgz,lzh,zip,arc}=file-roller
 # }}}
 
-autoload -Uz config-bindkeys    && config-bindkeys
+# {{{ キー關聯
+# http://www.clear-code.com/blog/2011/9/5.html
+# binding keys
+bindkey -e
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
+# }}}
+
 autoload -Uz config-completions && config-completions
 autoload -Uz git-setup          && git-setup
 
