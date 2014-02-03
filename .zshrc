@@ -28,7 +28,11 @@ setopt sh_word_split
 #setopt share_history
 #setopt sun_keyboard_hack
 
-cdpath=(~) # cdコマンドに対する検索対象に$HOMEを追加。
+# cdコマンドに対する検索対象に$HOMEを追加。
+cdpath=(
+    ~
+    ~/scm(N-/)
+)
 
 autoload -Uz add-zsh-hook # hookを有効に。
 
