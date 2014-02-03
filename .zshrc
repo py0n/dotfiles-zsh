@@ -67,6 +67,8 @@ autoload -Uz config-chpwd       && config-chpwd
 autoload -Uz config-completions && config-completions
 autoload -Uz config-git         && config-git
 
+autoload -Uz zman
+
 # zprofモジュールが有効ならプロファイルを表示する。
 if which zprof > /dev/null 2>&1; then
     zprof

@@ -1,0 +1,6 @@
+# zsh の分からない用語を man から素早く探す
+# http://qiita.com/mollifier/items/14bbea7503910300b3ba
+
+PAGER="less -g -s '+/^       "$1"'" man zshall
+
+# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
