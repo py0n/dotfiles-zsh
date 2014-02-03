@@ -1,21 +1,29 @@
 # Gitのviewer設定。
 # http://motemen.hatenablog.com/entries/2013/11/26
 
-if [[ -x `whence git` && -x `whence diff-highlight` && -x `whence less` ]]; then
-    # 色設定。
-    git config --global --replace-all color.ui true
+if [[ -x `whence git` ]]; then
+    # エイリアス設定。
+    git config --global --replace-all alias.br branch
+    git config --global --replace-all alias.ci commit
+    git config --global --replace-all alias.co checkout
+    git config --global --replace-all alias.st status
 
-    # viewer設定。
-    if [[ -x `whence nkf` ]]; then
-        local PAGER="diff-highlight | nkf -w | LESS=-R less"
-    elif [[ -x `whence lv` ]]; then
-        local PAGER="diff-highlight | lv -Ou | LESS=-R less"
-    else
-        local PAGER="diff-highlight | LESS=-R less"
+    if [[ -x `whence diff-highlight` && -x `whence less` ]]; then
+        # 色設定。
+        git config --global --replace-all color.ui true
+
+        # viewer設定。
+        if [[ -x `whence nkf` ]]; then
+            local PAGER="diff-highlight | nkf -w | LESS=-R less"
+        elif [[ -x `whence lv` ]]; then
+            local PAGER="diff-highlight | lv -Ou | LESS=-R less"
+        else
+            local PAGER="diff-highlight | LESS=-R less"
+        fi
+        git config --global --replace-all pager.diff "$PAGER"
+        git config --global --replace-all pager.log "$PAGER"
+        git config --global --replace-all pager.show "$PAGER"
     fi
-    git config --global --replace-all pager.diff "$PAGER"
-    git config --global --replace-all pager.log "$PAGER"
-    git config --global --replace-all pager.show "$PAGER"
 fi
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
