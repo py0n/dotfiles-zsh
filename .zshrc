@@ -70,11 +70,12 @@ fpath=(
 
 autoload -Uz config-aliases     && config-aliases
 autoload -Uz config-bindkeys    && config-bindkeys
-autoload -Uz config-chpwd
 autoload -Uz config-completions && config-completions
 autoload -Uz config-git         && config-git
 
-add-zsh-hook chpwd config-chpwd
+# cdの後でlsを実行
+autoload -Uz ls_after_cd
+add-zsh-hook chpwd ls_after_cd
 
 # zprofモジュールが有効ならプロファイルを表示する。
 if which zprof > /dev/null 2>&1; then
