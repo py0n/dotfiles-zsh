@@ -44,7 +44,7 @@ autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 
 source $ZDOTDIR/prompt.zsh
 
-# {{ 履歴関連
+# {{{ 履歴関連
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
