@@ -37,6 +37,9 @@ cdpath=(
     ~
     ~/scm(N-/)
 )
+
+# cdの後でlsを実行
+autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 # }}}
 
 source $ZDOTDIR/prompt.zsh
@@ -79,9 +82,6 @@ autoload -Uz config-aliases     && config-aliases
 autoload -Uz config-bindkeys    && config-bindkeys
 autoload -Uz config-completions && config-completions
 autoload -Uz git-setup          && git-setup
-
-# cdの後でlsを実行
-autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 
 autoload -Uz zman
 
