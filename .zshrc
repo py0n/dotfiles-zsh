@@ -26,7 +26,7 @@ setopt sh_word_split
 
 autoload -Uz add-zsh-hook # hookを有効に。
 
-# {{{ ディレクトリ移動関連
+# {{{ ディレクトリ移動関連 (chpwd)
 setopt auto_cd # ディレクトリ名だけでcd
 setopt auto_pushd # cdするたびにスタックに積む
 setopt cdable_vars
@@ -42,7 +42,7 @@ cdpath=(
 autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 # }}}
 
-# {{{ 履歴関連
+# {{{ 履歴関連 (history)
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -84,7 +84,7 @@ autoload -Uz git-setup          && git-setup
 
 autoload -Uz zman
 
-# {{{ プロンプト関連
+# {{{ プロンプト関連 (prompt)
 
 source $ZDOTDIR/prompt.zsh
 
