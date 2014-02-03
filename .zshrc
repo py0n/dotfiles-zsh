@@ -26,38 +26,7 @@ setopt sh_word_split
 
 autoload -Uz add-zsh-hook # hookを有効に。
 
-# {{{ ディレクトリ移動関連
-setopt auto_cd # ディレクトリ名だけでcd
-setopt auto_pushd # cdするたびにスタックに積む
-setopt cdable_vars
-setopt pushd_ignore_dups # 重複してスタックに積まない
-
-# cdコマンドに対する検索対象に$HOMEを追加。
-cdpath=(
-    ~
-    ~/scm(N-/)
-)
-
-# cdの後でlsを実行
-autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
-# }}}
-
-# {{{ 履歴関連
-HISTFILE=$HOME/.zhistory
-HISTSIZE=1000000
-SAVEHIST=1000000
-
-# 陳腐な履歴は殘さず。
-# http://d.hatena.ne.jp/UDONCHAN/20100618/1276842846
-add-my-history() {
-    unsetopt sh_word_split # sh_word_splitが有効だとエラーになる。
-    local line=${1%%$'\n'}
-    local cmd=${line%% *}
-    [[ ${cmd} != (cd|exit|history|l|l[asl]|rm) ]]
-}
-
-add-zsh-hook zshaddhistory add-my-history
-# }}}
+# {{{ FPATH関連 (fpath)
 
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 
@@ -76,6 +45,40 @@ fpath=(
     $ZDOTDIR/functions(N-/)
     $fpath
 )
+# }}}
+
+# {{{ ディレクトリ移動関連 (chpwd)
+setopt auto_cd # ディレクトリ名だけでcd
+setopt auto_pushd # cdするたびにスタックに積む
+setopt cdable_vars
+setopt pushd_ignore_dups # 重複してスタックに積まない
+
+# cdコマンドに対する検索対象に$HOMEを追加。
+cdpath=(
+    ~
+    ~/scm(N-/)
+)
+
+# cdの後でlsを実行
+autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
+# }}}
+
+# {{{ 履歴関連 (history)
+HISTFILE=$HOME/.zhistory
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# 陳腐な履歴は殘さず。
+# http://d.hatena.ne.jp/UDONCHAN/20100618/1276842846
+add-my-history() {
+    unsetopt sh_word_split # sh_word_splitが有効だとエラーになる。
+    local line=${1%%$'\n'}
+    local cmd=${line%% *}
+    [[ ${cmd} != (cd|exit|history|l|l[asl]|rm) ]]
+}
+
+add-zsh-hook zshaddhistory add-my-history
+# }}}
 
 autoload -Uz config-aliases     && config-aliases
 autoload -Uz config-bindkeys    && config-bindkeys
@@ -84,7 +87,7 @@ autoload -Uz git-setup          && git-setup
 
 autoload -Uz zman
 
-# {{{ プロンプト関連
+# {{{ プロンプト関連 (prompt)
 # http://blog.8-p.info/2009/01/red-prompt
 # http://d.hatena.ne.jp/kakurasan/20100407/p1
 # http://kitak.hatenablog.jp/entry/2013/05/25/103059
@@ -114,7 +117,7 @@ zstyle ":vcs_info:git:*" unstagedstr ":U"
 # commitしていないstageがあることを示す文字列
 zstyle ":vcs_info:git:*" stagedstr ":S"
 
-source $ZDOTDIR/prompt.zsh
+autoload -Uz my_vcs_info && add-zsh-hook precmd my_vcs_info
 
 case "$UID" in
 0)
