@@ -85,6 +85,34 @@ autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 
 autoload -Uz zman
 
+# プロンプト
+
+case "$UID" in
+0)
+    PROMPT='%B%m{%n}%%%b '
+    RPROMPT='%B[%~]%b'
+    PATH=/bin:/sbin:/usr/bin:/usr/sbin
+    ;;
+*)
+    # 直前のコマンドが失敗時にステータスを表示
+    local _exitst=$'%(?..%F{red}(%0?%) %f)'
+    local _prompt=$'%F{yellow}%n%f%F{green}@%m%f ${_exitst}%# '
+
+    # psvar[1]が存在すれば緑色で表示 (See `man zshmics')
+    local _vcs=$'%1(v.%F{green}%1v%f.)'
+    local _cwd=$'%F{cyan}[%~]%f'
+    local _rprompt='${_vcs}${_cwd}'
+
+    local _lf=$'\n'
+    # ディレクトリに三階層目が存在すれば
+    # ${_rprompt}と${_lf}を表示
+    PROMPT="%3(~.${_rprompt}${_lf}.)${_prompt}"
+    # ディレクトリに三階層目が存在しなければ
+    # ${_rpromt}を表示
+    RPROMPT="%3(~..${_rprompt})"
+    ;;
+esac
+
 # zprofモジュールが有効ならプロファイルを表示する。
 if which zprof > /dev/null 2>&1; then
     zprof
