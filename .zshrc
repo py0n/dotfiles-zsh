@@ -11,8 +11,6 @@ setopt auto_param_keys
 setopt auto_remove_slash
 setopt extended_glob
 setopt extended_history
-setopt hist_ignore_dups
-setopt hist_ignore_space
 setopt list_types
 setopt no_beep
 setopt sh_word_split
@@ -67,6 +65,9 @@ autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+setopt hist_ignore_dups
+setopt hist_ignore_space
 
 # 陳腐な履歴は殘さず。
 # http://d.hatena.ne.jp/UDONCHAN/20100618/1276842846
