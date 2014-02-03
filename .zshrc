@@ -117,7 +117,7 @@ zstyle ":vcs_info:git:*" unstagedstr ":U"
 # commitしていないstageがあることを示す文字列
 zstyle ":vcs_info:git:*" stagedstr ":S"
 
-source $ZDOTDIR/prompt.zsh
+autoload -Uz my_vcs_info && add-zsh-hook precmd my_vcs_info
 
 case "$UID" in
 0)
