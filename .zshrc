@@ -6,16 +6,19 @@ debug_echo "(begin) .zshrc"
 
 # Set shell options
 # 有効にしてあるのは副作用の少ないもの
+setopt auto_cd # ディレクトリ名だけでcd
 setopt auto_name_dirs
 setopt auto_param_keys
+setopt auto_pushd # cdするたびにスタックに積む
 setopt auto_remove_slash
+setopt cdable_vars
 setopt extended_glob
 setopt extended_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt list_types
 setopt no_beep
-setopt pushd_ignore_dups
+setopt pushd_ignore_dups # 重複してスタックに積まない
 setopt sh_word_split
 # 便利だが副作用の強いものはコメントアウト
 #setopt auto_menu
@@ -24,6 +27,10 @@ setopt sh_word_split
 #setopt rm_star_silent
 #setopt share_history
 #setopt sun_keyboard_hack
+
+cdpath=(~) # cdコマンドに対する検索対象に$HOMEを追加。
+
+autoload -Uz add-zsh-hook # hookを有効に。
 
 source $ZDOTDIR/prompt.zsh
 
@@ -63,9 +70,11 @@ fpath=(
 
 autoload -Uz config-aliases     && config-aliases
 autoload -Uz config-bindkeys    && config-bindkeys
-autoload -Uz config-chpwd       && config-chpwd
 autoload -Uz config-completions && config-completions
 autoload -Uz config-git         && config-git
+
+# cdの後でlsを実行
+autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 
 autoload -Uz zman
 
