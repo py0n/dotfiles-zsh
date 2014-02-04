@@ -42,12 +42,10 @@ debug_echo '(begin) .zshenv'
 
 # {{{ 設定ファイルをコンパイル
 if [[ -n $ZCOMPILE ]]; then
-    for f in .zprofile .zshrc
+    for f in $ZDOTDIR/.zprofile $ZDOTDIR/.zshrc  $ZDOTDIR/functions/*
     do
-        local src=$ZDOTDIR/${f}
-        local dst=$ZDOTDIR/${f}.zwc
-        if [[ $dst -ot $src ]]; then
-            zcompile $src
+        if [[ ${f}.zwc -ot ${f} ]]; then
+            zcompile ${f}
         fi
     done
 fi
