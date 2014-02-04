@@ -1,0 +1,11 @@
+if [[ -n $ZCOMPILE ]]; then
+    for f in $ZDOTDIR/.zprofile $ZDOTDIR/.zshrc  $ZDOTDIR/functions/*
+    do
+        if [[ ${f}.zwc -ot ${f} ]]; then
+            zcompile ${f}
+        fi
+    done
+fi
+
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
+
