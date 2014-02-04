@@ -119,8 +119,8 @@ zstyle ':completion:*' group-name ''
 autoload -U compinit && compinit
 # }}}
 
-autoload -Uz compile-all && compile-all
-autoload -Uz git-setup   && git-setup
+autoload -Uz compile-widgets && compile-widgets
+autoload -Uz git-setup       && git-setup
 autoload -Uz zman
 
 # {{{ プロンプト関連 (prompt)

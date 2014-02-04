@@ -1,0 +1,5 @@
+if [[ -n $ZDOTDIR ]]; then
+    rm -f $ZDOTDIR/**/*.zwc
+fi
+
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4

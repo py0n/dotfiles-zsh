@@ -8,4 +8,3 @@ if [[ -n $ZCOMPILE ]]; then
 fi
 
 # vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
-
