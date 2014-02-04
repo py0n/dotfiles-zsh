@@ -3,7 +3,7 @@
 debug_echo "(begin) .zprofile"
 
 # http://www.clear-code.com/blog/2011/9/5.html
-if [[ -h $HOME/.zprofenable ]]; then
+if [[ -n $ZEDBUG && -n $ZPROFDEBUG ]]; then
     zmodload zsh/zprof && zprof
 fi
 

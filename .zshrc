@@ -202,11 +202,6 @@ case "$UID" in
 esac
 # }}}
 
-# zprofモジュールが有効ならプロファイルを表示する。
-if which zprof > /dev/null 2>&1; then
-    zprof
-fi
-
 debug_echo "(end) .zshrc"
 
 # vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
