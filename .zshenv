@@ -39,6 +39,20 @@ debug_echo () {
 }
 
 debug_echo '(begin) .zshenv'
+
+# {{{ 設定ファイルをコンパイル
+if [[ -n $ZCOMPILE ]]; then
+    for f in .zprofile .zshrc
+    do
+        local src=$ZDOTDIR/${f}
+        local dst=$ZDOTDIR/${f}.zwc
+        if [[ $dst -ot $src ]]; then
+            zcompile $src
+        fi
+    done
+fi
+# }}}
+
 debug_echo '(end) .zshenv'
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
