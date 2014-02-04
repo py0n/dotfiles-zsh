@@ -24,27 +24,6 @@ setopt sh_word_split
 
 autoload -Uz add-zsh-hook # hookを有効に。
 
-# {{{ FPATH関連 (fpath)
-
-# http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
-
-typeset -U fpath # 重複したパスを除外する
-
-# http://www.clear-code.com/blog/2011/9/5.html
-# (N-/): 存在しないディレクトリは登録しない。
-#    パス(...): ...という条件にマッチするパスのみ残す。
-#            N: NULL_GLOBオプションを設定。
-#               globがマッチしなかったり存在しないパスを無視する。
-#            -: シンボリックリンク先のパスを評価。
-#            /: ディレクトリのみ残す。
-
-# FPATHはサブシェルに引繼がれないので此處で設定する。
-fpath=(
-    $ZDOTDIR/functions(N-/)
-    $fpath
-)
-# }}}
-
 # {{{ ディレクトリ移動関連 (chpwd)
 setopt auto_cd # ディレクトリ名だけでcd
 setopt auto_pushd # cdするたびにスタックに積む
