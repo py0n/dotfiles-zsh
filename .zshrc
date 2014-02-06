@@ -70,12 +70,9 @@ alias fullreset='echo "\ec\ec"'
 alias ja='LANG=ja_JP.eucJP XMODIFIERS=@im=kinput2'
 alias la='ls -a'
 alias ll='ls -la'
-alias lv="$PAGER" # lvがなくてもlvでページャーを起動する。
 alias move='mv -i'
 alias po='popd'
 alias pu='pushd'
-alias zprofoff="rm $HOME/.zprofenable"
-alias zprofon="ln -s dummy $HOME/.zprofenable"
 
 # Alias and functions
 case "$OSTYPE" in
@@ -89,13 +86,18 @@ case "$OSTYPE" in
         ;;
 esac
 
-h () 		{history "$*" | lv}
-mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
-mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
-
 # gvim
 alias gvim="env GTM_IM_MODULE=xim gvim"
 alias gvimdiff="env GTK_IM_MODULE=xim gvimdiff"
+
+# lv
+if [[ -z `whence lv` ]]; then
+    alias lv="$PAGER" # lvがなくてもlvでページャーを起動する。
+fi
+
+h () 		{history "$*" | lv}
+mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
+mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 
 # Suffix aliases(起動コマンドは環境によって変更する)
 alias -s pdf=acroread dvi=xdvi
