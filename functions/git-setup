@@ -6,6 +6,9 @@ if [[ -x `whence git` ]]; then
     git config --global --replace-all alias.br branch
     git config --global --replace-all alias.ci commit
     git config --global --replace-all alias.co checkout
+    git config --global --replace-all alias.di diff
+    git config --global --replace-all alias.sd "diff --staged"
+    git config --global --replace-all alias.sdiff "diff --staged"
     git config --global --replace-all alias.st status
 
     if [[ -x `whence diff-highlight` && -x `whence less` ]]; then
