@@ -87,8 +87,8 @@ manpath=(
 
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 
-typeset -U fpath FPATH # 重複したパスを除外する
-typeset -x FPATH       # 環境変数にexportする
+typeset -U fpath FPATH  # 重複したパスを除外する
+#typeset -x FPATH       # 環境変数にexportする
 
 # http://www.clear-code.com/blog/2011/9/5.html
 # (N-/): 存在しないディレクトリは登録しない。
