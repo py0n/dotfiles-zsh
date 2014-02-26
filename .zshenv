@@ -30,7 +30,7 @@
 #
 # man zshを參照。
 
-export ZDOTDIR=$HOME/.zsh.d
+ZDOTDIR=$HOME/.zsh.d
 
 debug_echo () {
     if [[ -n $ZDEBUG ]]; then
