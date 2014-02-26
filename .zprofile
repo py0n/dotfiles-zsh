@@ -43,12 +43,14 @@ typeset -U path
 #            -: シンボリックリンク先のパスを評価。
 #            /: ディレクトリのみ残す。
 path=(
+    # anyenv
+    $HOME/.anyenv/bin(N-/)
     # cabal
-    $HOME/cabal-dev/bin(N-/)
     $HOME/.cabal/bin(N-/)
+    $HOME/cabal-dev/bin(N-/)
     # 自分用
-    $HOME/local/bin(N-/)
     $HOME/.local/bin(N-/)
+    $HOME/local/bin(N-/)
     # システム用
     /usr/local/**/bin(N-/)
     /usr/bin(N-/)
@@ -70,6 +72,7 @@ typeset -U manpath
 #            /: ディレクトリのみ残す。
 manpath=(
     # 自分用
+    $HOME/.local/**/man(N-/)
     $HOME/local/**/man(N-/)
     # システム用
     /usr/local/man(N-/)
@@ -131,6 +134,12 @@ cons25)
     fi
     ;;
 esac
+# }}}
+
+# {{{ anyenv関連 (anyenv)
+if [ -d $HOME/.anyenv ]; then
+    eval "$(anyenv init -)"
+fi
 # }}}
 
 ## PulseAudio
