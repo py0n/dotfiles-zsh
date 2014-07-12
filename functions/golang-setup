@@ -1,7 +1,0 @@
-# Goの設定
-
-if [[ -d $HOME/goenv ]]; then
-    export GOPATH=$HOME/goenv
-fi
-
-# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4

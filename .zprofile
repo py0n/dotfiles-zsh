@@ -29,6 +29,12 @@ if [[ -x `whence lv` ]]; then
 else
     export PAGER=less
 fi
+
+# Goの設定
+if [[ -x `whence go` ]]; then
+    export GOPATH=$HOME/goenv
+    mkdir -p $GOPATH
+fi
 # }}}
 
 # {{{ PATH関連 (path)
