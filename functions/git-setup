@@ -9,7 +9,7 @@ if [[ -x `whence git` ]]; then
     git config --global --replace-all alias.di diff
     git config --global --replace-all alias.sd "diff --staged"
     git config --global --replace-all alias.sdiff "diff --staged"
-    git config --global --replace-all alias.st status
+    git config --global --replace-all alias.st "status --branch --short"
 
     if [[ -x `whence diff-highlight` && -x `whence less` ]]; then
         # 色設定。
