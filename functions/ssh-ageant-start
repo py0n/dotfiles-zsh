@@ -14,6 +14,11 @@ case "$UNAME" in
         #trap 'eval $($SSH_PAGEANT -qk 2>/dev/null)' EXIT
         trap 'logout' HUP
         ;;
+    Darwin)
+        # Mac OS Xではssh-addに `-K` オプションを付けると
+        # KeyChainに登録される。
+        killall -0 ssh-agent 2> /dev/null || eval $(ssh-agent -s)
+        ;;
     *)
         ;;
 esac
