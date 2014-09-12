@@ -13,8 +13,8 @@ if [[ -x `whence git` ]]; then
     git config --global --replace-all alias.st "status --branch --short"
 
     if [[ -x `whence peco` ]]; then
-        git config --global --replace-all alias.bd "!git branch -d \$(git branch | awk '/^[^*]/{print $1}' | peco)"
-        git config --global --replace-all alias.co "!git checkout \$(git branch | awk '/^[^*]/{print $1}' | peco)"
+        git config --global --replace-all alias.bd "!git branch -d \$(git branch | awk '/^[^*]/{print \$1}' | peco)"
+        git config --global --replace-all alias.co "!git checkout \$(git branch | awk '/^[^*]/{print \$1}' | peco)"
     fi
 
     if [[ -x `whence diff-highlight` && -x `whence less` ]]; then
