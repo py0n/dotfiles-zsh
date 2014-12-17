@@ -9,6 +9,7 @@ fi
 
 # {{{ 環境変数 (environment)
 # http://koyudoon.hatenablog.com/entry/20120205/1328401222
+# http://walf443.hatenablog.com/entry/20071119/1195487813
 # http://www.clear-code.com/blog/2011/9/5.html
 
 export LANG=ja_JP.UTF-8
@@ -29,6 +30,9 @@ if [[ -x `whence lv` ]]; then
 else
     export PAGER=less
 fi
+
+# `/'を単語の區切りにする
+export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 # Goの設定
 if [[ -x `whence go` ]]; then
