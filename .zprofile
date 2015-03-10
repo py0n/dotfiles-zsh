@@ -53,6 +53,8 @@ typeset -U path PATH
 #            -: シンボリックリンク先のパスを評価。
 #            /: ディレクトリのみ残す。
 path=(
+    # go
+    $GOPATH/bin(N-/)
     # anyenv
     $HOME/.anyenv/bin(N-/)
     # cabal
