@@ -86,10 +86,6 @@ case "$OSTYPE" in
         ;;
 esac
 
-# gvim
-alias gvim="env GTM_IM_MODULE=xim gvim"
-alias gvimdiff="env GTK_IM_MODULE=xim gvimdiff"
-
 # lv
 if [[ -z `whence lv` ]]; then
     alias lv="$PAGER" # lvがなくてもlvでページャーを起動する。
