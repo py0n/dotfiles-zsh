@@ -9,7 +9,7 @@
 # * /etc/zshrc
 # * $ZDOTDIR/.zshrc
 # * /etc/zlogin
-# * /etc/.zlogin
+# * $ZDOTDIR/.zlogin
 #
 # 通常のシェル。
 #
