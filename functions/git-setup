@@ -11,6 +11,7 @@ if [[ -x `whence git` ]]; then
     git config --global --replace-all alias.di diff
     git config --global --replace-all alias.sd "diff --staged"
     git config --global --replace-all alias.st "status --branch --short"
+    git config --global --replace-all core.excludesfile "~/.gitignore"
 
     if [[ -x `whence peco` ]]; then
         git config --global --replace-all alias.bd "!git branch -d \$(git branch | awk '/^[^*]/{print \$1}' | peco)"
