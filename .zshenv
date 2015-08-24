@@ -14,7 +14,7 @@
 # 通常のシェル。
 #
 # * /etc/zshenv
-# * $ZDOTDIR/.zshrc
+# * $ZDOTDIR/.zshenv
 # * /etc/zshrc
 # * $ZDOTDIR/.zshrc
 #
@@ -25,10 +25,10 @@
 #
 # ログインシェルを抜ける時。
 #
-# * /etc/zlogout
 # * $ZDOTDIR/.zlogout
+# * /etc/zlogout
 #
-# man zshを參照。
+# man zsh (STARTUP/SHUTDOWN FILES)を參照。
 
 ZDOTDIR=$HOME/.zsh.d
 
