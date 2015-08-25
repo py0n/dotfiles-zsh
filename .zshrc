@@ -118,7 +118,7 @@ autoload -U compinit && compinit
 # }}}
 
 autoload -Uz compile-widgets && compile-widgets
-autoload -Uz git-setup       && git-setup
+autoload -Uz setup-git       && setup-git
 autoload -Uz zman
 
 # {{{ プロンプト関連 (prompt)

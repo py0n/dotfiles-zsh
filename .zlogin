@@ -2,7 +2,7 @@
 
 debug_echo "(begin) .zlogin"
 
-autoload -Uz ssh-ageant-start && ssh-ageant-start
+autoload -Uz start-ssh-ageant && start-ssh-ageant
 
 # zprofモジュールが有効ならプロファイルを表示する。
 if [[ -n $ZDEBUG && -n $ZPROFDEBUG ]]; then

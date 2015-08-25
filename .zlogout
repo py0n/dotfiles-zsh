@@ -2,7 +2,7 @@
 
 debug_echo "(begin) .zlogout"
 
-autoload -Uz ssh-ageant-stop && ssh-ageant-stop
+autoload -Uz stop-ssh-ageant && stop-ssh-ageant
 
 debug_echo "(end) .zlogout"
 
