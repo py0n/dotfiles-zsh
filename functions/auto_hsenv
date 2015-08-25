@@ -1,0 +1,36 @@
+# http://qiita.com/saturday06/items/3b67861b8ebcadeb01cd
+# chdir時にhsenvをactivate/deactivateする
+
+local search_dir=$PWD
+
+while [[ $search_dir != "/" ]];
+do
+    local hsenv_found=false
+    for dir in $(ls -A $search_dir)
+    do
+        [[ -n $dir ]] || continue
+        [[ -d $dir ]] || continue
+        [[ $dir == ".hsenv" ]] || continue
+        [[ -e $search_dir/$dir/bin/activate ]] || continue
+        hsenv_found=true
+        break
+    done
+    if ! $hsenv_found; then
+        search_dir=$search_dir/..
+        search_dir=${search_dir:a}
+        continue
+    fi
+    if [[ -n $HSENV && $HSENV != $search_dir ]]; then
+        deactivate_hsenv
+    fi
+    if [[ -z $HSENV ]]; then
+        local pwd_backup=$PWD
+        cd $search_dir
+        source .hsenv/bin/activate
+        cd $pwd_backup
+    fi
+    return
+done
+[[ -n $HSENV ]] && deactivate_hsenv
+
+# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
