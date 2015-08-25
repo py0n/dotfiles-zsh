@@ -65,6 +65,7 @@ path=(
     $GOPATH/bin(N-/)
     # anyenv
     $HOME/.anyenv/bin(N-/)
+    $HOME/.hsenv/bin(N-/)
     # cabal
     $HOME/.cabal/bin(N-/)
     $HOME/cabal-dev/bin(N-/)
