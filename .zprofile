@@ -7,7 +7,7 @@ if [[ -n $ZDEBUG && -n $ZPROFDEBUG ]]; then
     zmodload zsh/zprof && zprof
 fi
 
-# {{{ 環境変数 (environment)
+# {{{ Environments
 # http://koyudoon.hatenablog.com/entry/20120205/1328401222
 # http://walf443.hatenablog.com/entry/20071119/1195487813
 # http://www.clear-code.com/blog/2011/9/5.html
@@ -41,7 +41,7 @@ if [[ -x `whence go` ]]; then
 fi
 # }}}
 
-# {{{ PATH関連 (path)
+# {{{ PATH
 # http://www.clear-code.com/blog/2011/9/5.html
 # 重複したパスを除外する
 typeset -U path PATH
@@ -71,7 +71,7 @@ path=(
 )
 # }}}
 
-# {{{ MANPATH関連 (manpath)
+# {{{ MANPATH
 # http://www.clear-code.com/blog/2011/9/5.html
 # 重複したパスを除外する
 typeset -U manpath MANPATH
@@ -95,7 +95,7 @@ manpath=(
 )
 # }}}
 
-# {{{ FPATH関連 (fpath)
+# {{{ FPATH
 
 # http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 
@@ -117,7 +117,7 @@ fpath=(
 )
 # }}}
 
-# {{{ ls色関連 (lscolors)
+# {{{ lscolors
 # DIR_COLORS, LS_COLORS
 # http://journal.mycom.co.jp/column/zsh/009/index.html
 case "$TERM" in
