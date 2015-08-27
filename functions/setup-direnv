@@ -1,0 +1,8 @@
+# https://github.com/direnv/direnv
+# http://qiita.com/kompiro/items/5fc46089247a56243a62
+
+if [[ -x $(whence direnv) ]]; then
+    eval "$(direnv hook zsh)"
+fi
+
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
