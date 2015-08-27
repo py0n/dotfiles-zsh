@@ -113,6 +113,7 @@ autoload -U compinit && compinit
 # }}}
 
 autoload -Uz compile-widgets && compile-widgets
+autoload -Uz setup-direnv    && setup-direnv
 autoload -Uz setup-git       && setup-git
 autoload -Uz zman
 
