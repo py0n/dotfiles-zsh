@@ -86,11 +86,6 @@ case "$OSTYPE" in
         ;;
 esac
 
-# lv
-if [[ -z `whence lv` ]]; then
-    alias lv="$PAGER" # lvがなくてもlvでページャーを起動する。
-fi
-
 h () 		{history "$*" | lv}
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}

@@ -24,11 +24,16 @@ if [[ -x `whence vim` ]]; then
     export EDITOR=vim
 fi
 
-# 優先的にlvを使用する
-if [[ -x `whence lv` ]]; then
+# lvを優先。lvがなくてもlvでページャーを起動する。
+if [[ -x $(whence lv) ]]; then
     export PAGER=lv
 else
-    export PAGER=less
+    if [[ -x $(whence less) ]]; then
+        export PAGER=less
+    fi
+    if [[ -n $PAGER ]]; then
+        alias lv=$PAGER
+    fi
 fi
 
 # `/'を単語の區切りにする
