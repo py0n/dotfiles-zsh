@@ -3,7 +3,7 @@
 # ログインシェル。
 #
 # * /etc/zshenv
-# * $ZDOTDIE/.zshenv
+# * $ZDOTDIR/.zshenv
 # * /etc/zprofile
 # * $ZDOTDIR/.zprofile
 # * /etc/zshrc
