@@ -1,7 +1,13 @@
 # https://github.com/direnv/direnv
 # http://qiita.com/kompiro/items/5fc46089247a56243a62
 
-if [[ -x $(whence direnv) ]]; then
+if [[ ! -x "$(whence direnv)" ]]; then
+    if [[ -x "$(whence go)" && -n "$GOPATH" ]]; then
+        go get github.com/direnv/direnv
+        mv $GOPATH/bin/direnv $LOCALBIN/
+    fi
+fi
+if [[ -x "$(whence direnv)" ]]; then
     eval "$(direnv hook zsh)"
 fi
 

@@ -19,10 +19,17 @@ export LESS='-iscj5'
 
 export SVN_SSH='ssh'
 
-# 優先的にvimを使用する
-if [[ -x `whence vim` ]]; then
-    export EDITOR=vim
+# `/'を単語の區切りにする
+export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
+
+# Goの設定
+if [[ -x $(whence go) ]]; then
+    export GOPATH=$HOME/goenv
+    mkdir -p $GOPATH
 fi
+
+export LOCALBIN=$HOME/local/bin
+mkdir -p $LOCALBIN
 
 # lvを優先。lvがなくてもlvでページャーを起動する。
 if [[ -x $(whence lv) ]]; then
@@ -36,13 +43,9 @@ else
     fi
 fi
 
-# `/'を単語の區切りにする
-export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
-
-# Goの設定
-if [[ -x `whence go` ]]; then
-    export GOPATH=$HOME/goenv
-    mkdir -p $GOPATH
+# 優先的にvimを使用する
+if [[ -x $(whence vim) ]]; then
+    export EDITOR=vim
 fi
 # }}}
 
@@ -67,7 +70,7 @@ path=(
     $HOME/cabal-dev/bin(N-/)
     # 自分用
     $HOME/.local/bin(N-/)
-    $HOME/local/bin(N-/)
+    $LOCALBIN(N-/)
     # システム用
     /usr/local/**/bin(N-/)
     /usr/bin(N-/)
