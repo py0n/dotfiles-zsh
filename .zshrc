@@ -37,7 +37,12 @@ cdpath=(
 )
 
 # cdの後でlsを実行
+# http://qiita.com/yuyuchu3333/items/b10542db482c3ac8b059
 autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
+
+# 自動でhsenvをactivate/deactivate
+# http://qiita.com/saturday06/items/3b67861b8ebcadeb01cd
+autoload -Uz auto_hsenv && add-zsh-hook precmd auto_hsenv
 # }}}
 
 # {{{ 履歴関連 (history)
