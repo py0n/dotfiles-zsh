@@ -2,42 +2,28 @@
 # chdir時にhsenvをactivate/deactivateする
 
 local search_dir=$PWD
-if [[ -n "${HSENV}" ]]; then
-    # deactivate
-    while [[ "${search_dir}" != "/" ]]
+while [[ "${search_dir}" != "/" ]]
+do
+    local hsenv_dir=""
+    for dir in $(find ${search_dir} -maxdepth 1 -type d -name '.hsenv*')
     do
-        for dir in $(find ${search_dir} -maxdepth 1 -type d -name '.hsenv*')
-        do
-            if [[ -e ${dir}/bin/activate ]]; then
-                return
-            fi
-        done
-        search_dir=${search_dir}/..
-        search_dir=${search_dir:a}
-    done
-    [[ "${search_dir}" == "/" ]] && deactivate_hsenv
-else
-    # activate
-    while [[ "${search_dir}" != "/" ]]
-    do
-        local hsenv_dir=""
-        for dir in $(find ${search_dir} -maxdepth 1 -type d -name '.hsenv*')
-        do
-            if [[ -n "${hsenv_dir}" ]]; then
-                echo "multiple environments in ${search_dir}."
-                echo "activate manually"
-                return
-            elif [[ -e ${dir}/bin/activate ]]; then
-                hsenv_dir=${dir}
-            fi
-        done
-        if [[ -n "${hsenv_dir}" ]]; then
-            source ${hsenv_dir}/bin/activate
+        if [[ -n "${HSENV}" && -e ${dir}/bin/activate ]]; then
             return
+        elif [[ -z "${HSENV}" && -n "${hsenv_dir}" ]]; then
+            echo "multiple environments in ${search_dir}."
+            echo "activate manually"
+            return
+        elif [[ -z "${HSENV}" && -e ${dir}/bin/activate ]]; then
+            hsenv_dir=${dir}
         fi
-        search_dir=${search_dir}/..
-        search_dir=${search_dir:a}
     done
-fi
+    if [[ -z "${HSENV}" && -n "${hsenv_dir}" ]]; then
+        source ${hsenv_dir}/bin/activate
+        return
+    fi
+    search_dir=${search_dir}/..
+    search_dir=${search_dir:a}
+done
+[[ -n "$HSENV" && "${search_dir}" == "/" ]] && deactivate_hsenv
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
