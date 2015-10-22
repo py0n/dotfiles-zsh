@@ -83,7 +83,11 @@ alias pu='pushd'
 case "$OSTYPE" in
     freebsd*|darwin*)
         alias man='env -u LANG man'
-        alias ls='ls -F -G -w'
+        if [[ -x $(whence gls) ]]; then
+            alias ls='gls -F --color=auto'
+        else
+            alias ls='ls -F -G -w'
+        fi
         ;;
     *)
         alias man='env --unset LANG man'

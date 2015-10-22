@@ -132,7 +132,17 @@ fpath=(
 case "$TERM" in
     kterm*|xterm*|screen*)
         if [[ -f $HOME/.dir_colors ]]; then
-            eval `dircolors $HOME/.dir_colors`
+            case "${OSTYPE}" in
+                darwin*)
+                    # need 'brew install coreutils'
+                    if [[ -x $(whence gdircolors) ]]; then
+                        eval $(gdircolors $HOME/.dir_colors)
+                    fi
+                    ;;
+                *)
+                    eval $(dircolors $HOME/.dir_colors)
+                    ;;
+            esac
         fi
         if [[ -z "$LSCOLORS" ]]; then
             LSCOLORS=exfxcxdxbxegedabagacad
