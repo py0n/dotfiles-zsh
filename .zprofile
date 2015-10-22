@@ -28,23 +28,6 @@ mkdir -p $GOPATH
 
 export LOCALBIN=$HOME/local/bin
 mkdir -p $LOCALBIN
-
-# lvを優先。lvがなくてもlvでページャーを起動する。
-if [[ -x $(whence lv) ]]; then
-    export PAGER=lv
-else
-    if [[ -x $(whence less) ]]; then
-        export PAGER=less
-    fi
-    if [[ -n $PAGER ]]; then
-        alias lv=$PAGER
-    fi
-fi
-
-# 優先的にvimを使用する
-if [[ -x $(whence vim) ]]; then
-    export EDITOR=vim
-fi
 # }}}
 
 # {{{ PATH
@@ -124,7 +107,25 @@ fpath=(
 )
 # }}}
 
-# {{{ lscolors
+# {{{ commands
+# lvを優先。lvがなくてもlvでページャーを起動する。
+if [[ -x $(whence lv) ]]; then
+    export PAGER=lv
+else
+    if [[ -x $(whence less) ]]; then
+        export PAGER=less
+    fi
+    if [[ -n $PAGER ]]; then
+        alias lv=$PAGER
+    fi
+fi
+
+# 優先的にvimを使用する
+if [[ -x $(whence vim) ]]; then
+    export EDITOR=vim
+fi
+
+# ls (lscolors)
 # DIR_COLORS, LS_COLORS
 # http://journal.mycom.co.jp/column/zsh/009/index.html
 case "$TERM" in
