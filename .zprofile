@@ -23,10 +23,8 @@ export SVN_SSH='ssh'
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 # Goの設定
-if [[ -x $(whence go) ]]; then
-    export GOPATH=$HOME/goenv
-    mkdir -p $GOPATH
-fi
+export GOPATH=$HOME/goenv
+mkdir -p $GOPATH
 
 export LOCALBIN=$HOME/local/bin
 mkdir -p $LOCALBIN
