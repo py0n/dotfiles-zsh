@@ -55,7 +55,7 @@ path=(
     $HOME/.local/bin(N-/)
     $LOCALBIN(N-/)
     # システム用
-    /usr/local/**/bin(N-/)
+    /usr/local/bin(N-/)
     /usr/bin(N-/)
     /bin(N-/)
     $path
