@@ -43,6 +43,7 @@ typeset -U path PATH
 #            /: ディレクトリのみ残す。
 path=(
     # go
+    $HOME/go/bin(N-/)
     $GOPATH/bin(N-/)
     # anyenv
     $HOME/.anyenv/bin(N-/)
