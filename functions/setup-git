@@ -11,7 +11,7 @@ if [[ -x $(whence git) ]]; then
     ${gitconfig} alias.bv "branch -vv"
     ${gitconfig} alias.cb "checkout -b"
     ${gitconfig} alias.ci commit
-    ${gitconfig} alias.co '!f(){ if [[ $# == 0 && -x $(which peco) ]]; then local branch=$(git branch --all | grep "^[^\*]" | peco | awk "{print $NF}"); if [[ ${branch} =~ "remotes/" ]]; then git checkout -b $(echo ${branch} | sed -e "s/^remotes\/[^\/]*\///") $(echo ${branch} | sed -e "s/^remotes\///"); else git checkout ${branch}; fi; else git checkout ${@}; fi; }; f'
+    ${gitconfig} alias.co '!f(){ if [[ $# == 0 && -x $(which peco) ]]; then local branch=$(git branch --all | awk "/^[^\*]/{print \$1}" | peco); if [[ ${branch} =~ "remotes/" ]]; then git checkout -b $(echo ${branch} | sed -e "s/^remotes\/[^\/]*\///") $(echo ${branch} | sed -e "s/^remotes\///"); else git checkout ${branch}; fi; else git checkout ${@}; fi; }; f'
     ${gitconfig} alias.di "diff --find-renames --ignore-space-change"
     ${gitconfig} alias.ds "diff --find-renames --ignore-space-change --staged"
     ${gitconfig} alias.lg "log --decorate --graph --stat"
