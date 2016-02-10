@@ -3,24 +3,6 @@
 # http://qiita.com/yamagen0915/items/eb8275275fc87935843b
 
 if [[ -x $(whence git) ]]; then
-
-    # よしなにcheckout
-    # bashで書くこと
-    function gitcheckout() {
-        if [[ $# == 0 && -x $(which peco) ]]; then
-            local branch=$(git branch --all | grep '^[^\*]' | peco | awk '{print $NF}')
-            if [[ "${branch}" =~ 'remotes/' ]]; then
-                local localbranch=$(echo ${branch} | sed -e 's/^remotes\/[^\/]*\///')
-                local remotebranch=$(echo ${branch} | sed -e 's/^remotes\///')
-                git checkout -b ${localbranch} ${remotebranch}
-            else
-                git checkout ${branch}
-            fi
-        else
-            git checkout ${@}
-        fi
-    }
-
     local gitconfig='git config --global --replace-all'
 
     # エイリアス設定。
@@ -29,7 +11,7 @@ if [[ -x $(whence git) ]]; then
     ${gitconfig} alias.bv "branch -vv"
     ${gitconfig} alias.cb "checkout -b"
     ${gitconfig} alias.ci commit
-    ${gitconfig} alias.co "!$(where gitcheckout);gitcheckout"
+    ${gitconfig} alias.co '!f(){ if [[ $# == 0 && -x $(which peco) ]]; then local branch=$(git branch --all | grep "^[^\*]" | peco | awk "{print $NF}"); if [[ ${branch} =~ "remotes/" ]]; then git checkout -b $(echo ${branch} | sed -e "s/^remotes\/[^\/]*\///") $(echo ${branch} | sed -e "s/^remotes\///"); else git checkout ${branch}; fi; else git checkout ${@}; fi; }; f'
     ${gitconfig} alias.di "diff --find-renames --ignore-space-change"
     ${gitconfig} alias.ds "diff --find-renames --ignore-space-change --staged"
     ${gitconfig} alias.lg "log --decorate --graph --stat"
