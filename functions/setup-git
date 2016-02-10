@@ -6,7 +6,7 @@ if [[ -x $(whence git) ]]; then
     local gitconfig='git config --global --replace-all'
 
     # エイリアス設定。
-    ${gitconfig} alias.bd "!f(){ if [[ \$# == 0 && -x \$(which peco) ]]; then git branch -d \$(git branch | awk '/^[^*]/{print \$1}' | peco); else git branch -d \${@}; fi; };f"
+    ${gitconfig} alias.bd "!f(){ if [[ \$# == 0 && -x \$(which peco) ]]; then git branch -d \$(git branch | awk '/^[^*]/{sub(/^[ \*] /,\"\");print \$1}' | peco); else git branch -d \${@}; fi; };f"
     ${gitconfig} alias.br branch
     ${gitconfig} alias.bv "branch -vv"
     ${gitconfig} alias.cb "checkout -b"
