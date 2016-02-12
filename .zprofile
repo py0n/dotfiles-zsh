@@ -23,11 +23,12 @@ export SVN_SSH='ssh'
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 # Goの設定
+if [[ -x "$HOME/go/bin/go" ]]; then
+    export GOROOT=$HOME/go
+fi
 export GOPATH=$HOME/goenv
-mkdir -p $GOPATH
 
 export LOCALBIN=$HOME/local/bin
-mkdir -p $LOCALBIN
 # }}}
 
 # {{{ PATH
@@ -43,7 +44,7 @@ typeset -U path PATH
 #            /: ディレクトリのみ残す。
 path=(
     # go
-    $HOME/go/bin(N-/)
+    $GOROOT/bin(N-/)
     $GOPATH/bin(N-/)
     # anyenv
     $HOME/.anyenv/bin(N-/)
@@ -165,6 +166,15 @@ cons25)
     fi
     ;;
 esac
+# }}}
+
+# {{{ 各種ディレクトリ
+if [[ -n $GOPATH ]]; then
+    mkdir -p $GOPATH
+fi
+if [[ -n $LOCALBIN ]]; then
+    mkdir -p $LOCALBIN
+fi
 # }}}
 
 # {{{ anyenv関連 (anyenv)
