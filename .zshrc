@@ -79,6 +79,11 @@ alias move='mv -i'
 alias po='popd'
 alias pu='pushd'
 
+# lvがなくてもlvでページャーを起動する。
+if [[ -n $PAGER && $PAGER != "lv" ]]; then
+    alias lv=$PAGER
+fi
+
 # Alias and functions
 case "$OSTYPE" in
     freebsd*|darwin*)

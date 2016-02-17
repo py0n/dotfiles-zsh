@@ -7,7 +7,7 @@ if [[ -n $ZDEBUG && -n $ZPROFDEBUG ]]; then
     zmodload zsh/zprof && zprof
 fi
 
-# {{{ Environments
+# {{{ ENVIRONMENTS
 # http://koyudoon.hatenablog.com/entry/20120205/1328401222
 # http://walf443.hatenablog.com/entry/20071119/1195487813
 # http://www.clear-code.com/blog/2011/9/5.html
@@ -23,6 +23,18 @@ export SVN_SSH='ssh'
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 export LOCALBIN=$HOME/local/bin
+
+# lvを優先。
+if [[ -x $(whence lv) ]]; then
+    export PAGER=$(whence lv)
+elif [[ -x $(whence less) ]]; then
+    export PAGER=$(whence less)
+fi
+
+# vimを優先
+if [[ -x $(whence vim) ]]; then
+    export EDITOR=$(whence vim)
+fi
 # }}}
 
 # {{{ PATH
@@ -100,24 +112,7 @@ fpath=(
 )
 # }}}
 
-# {{{ commands
-# lvを優先。lvがなくてもlvでページャーを起動する。
-if [[ -x $(whence lv) ]]; then
-    export PAGER=lv
-else
-    if [[ -x $(whence less) ]]; then
-        export PAGER=less
-    fi
-    if [[ -n $PAGER ]]; then
-        alias lv=$PAGER
-    fi
-fi
-
-# 優先的にvimを使用する
-if [[ -x $(whence vim) ]]; then
-    export EDITOR=vim
-fi
-
+# {{{ LSCOLORS
 # ls (lscolors)
 # DIR_COLORS, LS_COLORS
 # http://journal.mycom.co.jp/column/zsh/009/index.html
