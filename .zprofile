@@ -22,12 +22,6 @@ export SVN_SSH='ssh'
 # `/'を単語の區切りにする
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
-# Goの設定
-if [[ -x "$HOME/go/bin/go" ]]; then
-    export GOROOT=$HOME/go
-fi
-export GOPATH=$HOME/goenv
-
 export LOCALBIN=$HOME/local/bin
 # }}}
 
@@ -43,9 +37,6 @@ typeset -U path PATH
 #            -: シンボリックリンク先のパスを評価。
 #            /: ディレクトリのみ残す。
 path=(
-    # go
-    $GOROOT/bin(N-/)
-    $GOPATH/bin(N-/)
     # anyenv
     $HOME/.anyenv/bin(N-/)
     $HOME/.hsenv/bin(N-/)
@@ -169,9 +160,6 @@ esac
 # }}}
 
 # {{{ 各種ディレクトリ
-if [[ -n $GOPATH ]]; then
-    mkdir -p $GOPATH
-fi
 if [[ -n $LOCALBIN ]]; then
     mkdir -p $LOCALBIN
 fi
