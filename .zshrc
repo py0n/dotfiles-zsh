@@ -126,10 +126,10 @@ zstyle ':completion:*' group-name ''
 autoload -U compinit && compinit
 # }}}
 
-autoload -Uz compile-widgets && compile-widgets
-autoload -Uz setup-direnv    && setup-direnv
-autoload -Uz setup-git       && setup-git
-autoload -Uz setup-go        && setup-go
+autoload -Uz setup-widgets && setup-widgets
+autoload -Uz setup-direnv  && setup-direnv
+autoload -Uz setup-git     && setup-git
+autoload -Uz setup-go      && setup-go
 
 autoload -Uz 256colortest
 autoload -Uz zman

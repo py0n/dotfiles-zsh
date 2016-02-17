@@ -1,7 +1,8 @@
 if [[ -n $ZCOMPILE ]]; then
     for f in $ZDOTDIR/.zprofile $ZDOTDIR/.zshrc  $ZDOTDIR/functions/*
     do
-        if [[ ${f}.zwc -ot ${f} ]]; then
+        local zwcfile=${f}.zwc
+        if [[ ! -f ${zwcfile} || ${zwcfile} -ot ${f} ]]; then
             zcompile ${f}
         fi
     done
