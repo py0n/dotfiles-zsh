@@ -1,0 +1,38 @@
+# https://gist.github.com/yoshikaw/5599224
+local format=' %3d'
+local -a sgr_codes
+local -A sgr_code; sgr_code=(b 1 u 4 B 5 r 7 xterm256fg '38;5')
+while getopts oxXbuBr1457 arg; do
+    case "$arg" in
+        o)   format=" %03$arg";;
+        x|X) format=" %02$arg ";;
+        b|u|B|r) sgr_codes+=($sgr_code[$arg]);;
+        1|4|5|7) sgr_codes+=($arg);;
+    esac
+done
+sgr_codes+=($sgr_code[xterm256fg])
+local sgr_param=${(j<;>)sgr_codes}
+
+local csi="\e["
+local sgr_reset="${csi}0m"
+local eol="${sgr_reset}\n"
+
+local code line
+for code in {0..15}; do # system colors
+    test $code -gt 0 -a $(( $code % 8 )) -eq 0 && { printf "$line${sgr_reset}${line//38;/48;}${eol}"; line= }
+    line="$line${csi}${sgr_param};${code}m$(printf "$format" $code)"
+done
+printf "$line${line//38;/48;}${eol}"; line=
+
+local padding="${sgr_reset}        "
+for code in {16..231}; do # color cube
+    test $code -gt 16 -a $(( ( $code - 16 ) % 6 )) -eq 0 && { printf "$line$padding${line//38;/48;}${eol}"; line= }
+    line="$line${csi}${sgr_param};${code}m$(printf "$format" $code)"
+done
+printf "$line$padding${line//38;/48;}${eol}"; line=
+
+for code in {232..255}; do # grayscale ramp
+    line="$line${csi}${sgr_param};${code}m$(printf "$format" $code)"
+done
+printf "$line${eol}${line//38;/48;}${eol}"
+# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4

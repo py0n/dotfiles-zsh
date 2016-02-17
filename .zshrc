@@ -124,6 +124,8 @@ autoload -U compinit && compinit
 autoload -Uz compile-widgets && compile-widgets
 autoload -Uz setup-direnv    && setup-direnv
 autoload -Uz setup-git       && setup-git
+
+autoload -Uz 256colortest
 autoload -Uz zman
 
 # {{{ プロンプト関連 (prompt)
