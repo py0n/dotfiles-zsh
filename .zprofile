@@ -167,18 +167,19 @@ fi
 # }}}
 
 # {{{ 各種設定ファイル
-for f in \
-    ackrc \
-    dir_colors \
-    gitignore \
-    lv \
-    perltidyrc \
-    tmux.conf
-do
-    if [[ -f $ZDOTDIR/resources/${f} ]]; then
-        ln -sfn $ZDOTDIR/resources/${f} $HOME/.${f}
-    fi
-done
+(){
+    local f
+    for f in \
+        .ackrc \
+        .dir_colors \
+        .gitignore \
+        .lv \
+        .perltidyrc \
+        .tmux.conf
+    do
+        [[ -f $ZDOTDIR/resources/${f} ]] && ln -sfn $ZDOTDIR/resources/${f} $HOME
+    done
+}
 # }}}
 
 ## PulseAudio

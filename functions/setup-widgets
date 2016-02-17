@@ -1,4 +1,5 @@
 if [[ -n $ZCOMPILE ]]; then
+    local f
     for f in $ZDOTDIR/.zprofile $ZDOTDIR/.zshrc  $ZDOTDIR/functions/*
     do
         local zwcfile=${f}.zwc
