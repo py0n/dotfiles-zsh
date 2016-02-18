@@ -1,0 +1,38 @@
+# 着色man
+# http://qiita.com/ssh0/items/f148f0125faad5217160
+if [[ -x $(whence peco) ]]; then
+    case "$(whence -wa -- $1 | uniq | peco | sed 's/: / /' | cut -d' ' -f2)" in
+        builtin) # built-in
+            local man_indent _space
+            # TODO: get how many spaces before the commands
+            man_indent=7
+            _space="$(printf '%*s' "$man_indent" '')"
+            /usr/bin/man --pager="less -p'^${_space}\\$1 '" zshbuiltins
+            ;;
+        reserved) # reserved words
+            /usr/bin/man --pager="less -p'^COMPLEX COMMANDS$'" zshmisc
+            ;;
+        alias) # alias
+            whence -c $1
+            ;;
+        function) # function
+            if hash pygmentize 2>/dev/null; then
+                whence -f "$1" \
+                    | pygmentize -l sh \
+                    | ${MANPAGER:-${PAGER:-less}}
+            elif hash highlight 2>/dev/null; then
+                whence -f "$1" \
+                    | highlight --out-format=ansi --src-lang=Bash \
+                    | ${MANPAGER:-${PAGER:-less}}
+            else
+                whence -f "$1" | ${MANPAGER:-${PAGER:-less}}
+            fi
+            ;;
+        *) /usr/bin/man "$@"
+            ;;
+    esac
+else
+    /usr/bin/man "$@"
+fi
+
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4

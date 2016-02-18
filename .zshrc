@@ -266,6 +266,7 @@ autoload -Uz setup-go      && setup-go
 autoload -Uz setup-less    && setup-less
 
 autoload -Uz 256colortest
+autoload -Uz man
 autoload -Uz zman
 
 # {{{ プロンプト関連 (prompt)
