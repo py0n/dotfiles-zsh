@@ -30,6 +30,7 @@ if [[ -x $(whence lv) ]]; then
 elif [[ -x $(whence less) ]]; then
     export PAGER=$(whence less)
 fi
+export MANPAGER=${MANPAGER:-$(whence less)}
 
 # vimを優先
 if [[ -x $(whence vim) ]]; then

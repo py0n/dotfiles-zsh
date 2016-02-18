@@ -1,0 +1,13 @@
+# lessの着色
+# http://qiita.com/ssh0/items/f148f0125faad5217160
+if [[ $(tput colors) = 256 ]]; then
+    export LESS_TERMCAP_mb=$(tput bold)                # begin blinking
+    export LESS_TERMCAP_md=$(tput bold; tput setaf 4)  # begin bold (blue)
+    export LESS_TERMCAP_me=$(tput sgr0)                # end mode
+    export LESS_TERMCAP_se=$(tput sgr0)                # end standout-mode
+    export LESS_TERMCAP_so=$(tput bold; tput setaf 3)  # begin standout-mode (yellow)
+    export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)     # end underline
+    export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
+fi
+
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
