@@ -24,6 +24,14 @@ setopt sh_word_split
 
 autoload -Uz add-zsh-hook # hookを有効に。
 
+# {{{ 補完關聯
+# http://www.clear-code.com/blog/2011/9/5.html
+# 補完システムを利用: 補完の挙動が分かりやすくなる2つの設定のみ記述
+zstyle ':completion:*' format '%BCompleting %d%b'
+zstyle ':completion:*' group-name ''
+autoload -U compinit && compinit
+# }}}
+
 # {{{ PATH
 # http://www.clear-code.com/blog/2011/9/5.html
 # 重複したパスを除外する
@@ -203,6 +211,15 @@ alias move='mv -i'
 alias po='popd'
 alias pu='pushd'
 
+# `g` をgitのエイリアスにする
+# gitの補完が聞くようにcompdef
+# http://u16suzu.hatenablog.com/entry/2013/12/23/030547
+local gitpath=$(whence git)
+if [[ -x ${gitpath} ]]; then
+    alias   g=${gitpath}
+    compdef g=git
+fi
+
 # lvがなくてもlvでページャーを起動する。
 if [[ -n $PAGER && $PAGER != "lv" ]]; then
     alias lv=$PAGER
@@ -240,14 +257,6 @@ alias -s {tgz,lzh,zip,arc}=file-roller
 bindkey -e
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
-# }}}
-
-# {{{ 補完關聯
-# http://www.clear-code.com/blog/2011/9/5.html
-# 補完システムを利用: 補完の挙動が分かりやすくなる2つの設定のみ記述
-zstyle ':completion:*' format '%BCompleting %d%b'
-zstyle ':completion:*' group-name ''
-autoload -U compinit && compinit
 # }}}
 
 autoload -Uz setup-widgets && setup-widgets
