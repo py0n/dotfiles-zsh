@@ -37,6 +37,12 @@ if [[ -x $(whence vim) ]]; then
 fi
 # }}}
 
+# {{{ DIRECTORIES
+if [[ -n $LOCALBIN ]]; then
+    mkdir -p $LOCALBIN
+fi
+# }}}
+
 # {{{ PATH
 # http://www.clear-code.com/blog/2011/9/5.html
 # 重複したパスを除外する
@@ -112,6 +118,10 @@ fpath=(
 )
 # }}}
 
+# {{{ RCFILES
+autoload -Uz setup-rc && setup-rc
+# }}}
+
 # {{{ LSCOLORS
 # ls (lscolors)
 # DIR_COLORS, LS_COLORS
@@ -154,32 +164,10 @@ cons25)
 esac
 # }}}
 
-# {{{ 各種ディレクトリ
-if [[ -n $LOCALBIN ]]; then
-    mkdir -p $LOCALBIN
-fi
-# }}}
-
 # {{{ anyenv関連 (anyenv)
 if [ -d $HOME/.anyenv ]; then
     eval "$(anyenv init -)"
 fi
-# }}}
-
-# {{{ 各種設定ファイル
-(){
-    local f
-    for f in \
-        .ackrc \
-        .dir_colors \
-        .gitignore \
-        .lv \
-        .perltidyrc \
-        .tmux.conf
-    do
-        [[ -f $ZDOTDIR/resources/${f} ]] && ln -sfn $ZDOTDIR/resources/${f} $HOME
-    done
-}
 # }}}
 
 ## PulseAudio

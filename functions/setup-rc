@@ -1,0 +1,7 @@
+local f
+for f in $ZDOTDIR/resources/*(N.)
+do
+    ln -sfn ${f} $HOME/.${f:t}
+done
+
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
