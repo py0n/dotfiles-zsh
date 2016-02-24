@@ -166,6 +166,9 @@ setopt auto_pushd # cdするたびにスタックに積む
 setopt cdable_vars
 setopt pushd_ignore_dups # 重複してスタックに積まない
 
+mdcd(){mkdir -p "$@" && cd "$*[-1]"}
+mdpu(){mkdir -p "$@" && pushd "$*[-1]"}
+
 # cdコマンドに対する検索対象に$HOMEを追加。
 cdpath=(
     ~
@@ -261,9 +264,6 @@ case "$OSTYPE" in
         alias ls='ls -F --color=auto'
         ;;
 esac
-
-mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
-mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 
 # Suffix aliases(起動コマンドは環境によって変更する)
 alias -s pdf=acroread dvi=xdvi
