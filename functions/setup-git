@@ -2,7 +2,16 @@
 # http://motemen.hatenablog.com/entries/2013/11/26
 # http://qiita.com/yamagen0915/items/eb8275275fc87935843b
 
-if [[ -x $(whence git) ]]; then
+    if [[ -x $(whence git) ]]; then
+    # `g` をgitのエイリアスにする
+    # gitの補完が聞くようにcompdef
+    # http://u16suzu.hatenablog.com/entry/2013/12/23/030547
+    local gitpath=$(whence git)
+    if [[ -x ${gitpath} ]]; then
+        alias   g=${gitpath}
+        compdef g=git
+    fi
+
     local gitconfig='git config --global --replace-all'
 
     # エイリアス設定。

@@ -241,15 +241,6 @@ alias move='mv -i'
 alias po='popd'
 alias pu='pushd'
 
-# `g` をgitのエイリアスにする
-# gitの補完が聞くようにcompdef
-# http://u16suzu.hatenablog.com/entry/2013/12/23/030547
-local gitpath=$(whence git)
-if [[ -x ${gitpath} ]]; then
-    alias   g=${gitpath}
-    compdef g=git
-fi
-
 # lvがなくてもlvでページャーを起動する。
 if [[ -n $PAGER && $PAGER != "lv" ]]; then
     alias lv=$PAGER
