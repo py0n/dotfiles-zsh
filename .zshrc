@@ -10,19 +10,23 @@ setopt auto_name_dirs
 setopt auto_param_keys
 setopt auto_remove_slash
 setopt extended_glob
-setopt extended_history
 setopt list_types
 setopt no_beep
 setopt sh_word_split
 # 便利だが副作用の強いものはコメントアウト
 #setopt auto_menu
 #setopt correct
-#setopt inc_append_history
 #setopt rm_star_silent
-#setopt share_history
 #setopt sun_keyboard_hack
 
 autoload -Uz add-zsh-hook # hookを有効に。
+
+# {{{ キー關聯
+# http://www.clear-code.com/blog/2011/9/5.html
+# EDITOR=vimだとviキーバインドになってしまう為、
+# emacsキーバインドを使用するように明示。
+bindkey -e
+# }}}
 
 # {{{ 補完關聯
 # http://www.clear-code.com/blog/2011/9/5.html
@@ -177,24 +181,50 @@ autoload -Uz ls_after_cd && add-zsh-hook chpwd ls_after_cd
 autoload -Uz auto_hsenv && add-zsh-hook precmd auto_hsenv
 # }}}
 
-# {{{ 履歴関連 (history)
+# {{{ history (履歴関連)
+# `zsh` の `history` は `fc -l` のエイリアス (man zshbuiltins)
+# http://qiita.com/syui/items/c1a1567b2b76051f50c4
+# http://www.clear-code.com/blog/2011/9/5.html
+#setopt hist_ignore_dups
+#setopt hist_ignore_space
+#setopt inc_append_history
+setopt extended_history
+setopt hist_ignore_all_dups
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt share_history
+
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
+
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-setopt hist_ignore_dups
-setopt hist_ignore_space
-
 # 陳腐な履歴は殘さず。
 # http://d.hatena.ne.jp/UDONCHAN/20100618/1276842846
+# 失敗したコマンドは履歴に残したくないが、下記の記事を読むと無理そう。
+# http://qiita.com/mollifier/items/558712f1a93ee07e22e2
 add-my-history() {
     unsetopt sh_word_split # sh_word_splitが有効だとエラーになる。
     local line=${1%%$'\n'}
     local cmd=${line%% *}
-    [[ ${cmd} != (cd|exit|history|l|l[asl]|rm) ]]
+    [[ ${cmd} != (cd|exit|history|kill|l|l[asl]|rm|sudo|/) ]]
 }
-
 add-zsh-hook zshaddhistory add-my-history
+
+# `peco` と連携。
+# http://qiita.com/shepabashi/items/f2bc2be37a31df49bca5
+if [[ -x $(whence peco) ]]; then
+    peco-history-selection() {
+        BUFFER=$(fc -lnr 1 | awk '!a[$0]++' | peco)
+        CURSOR=$#BUFFER
+        zle reset-prompt
+    }
+    zle -N peco-history-selection
+    bindkey '^R' peco-history-selection
+fi
 # }}}
 
 # {{{ エイリアス關聯 (alias)
@@ -241,7 +271,6 @@ case "$OSTYPE" in
         ;;
 esac
 
-h () 		{history "$*" | lv}
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 
@@ -249,14 +278,6 @@ mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 alias -s pdf=acroread dvi=xdvi
 alias -s {odt,ods,odp,doc,xls,ppt}=soffice
 alias -s {tgz,lzh,zip,arc}=file-roller
-# }}}
-
-# {{{ キー關聯
-# http://www.clear-code.com/blog/2011/9/5.html
-# binding keys
-bindkey -e
-bindkey '^p' history-beginning-search-backward
-bindkey '^n' history-beginning-search-forward
 # }}}
 
 autoload -Uz setup-widgets && setup-widgets
