@@ -1,0 +1,9 @@
+# stack用の設定
+# http://docs.haskellstack.org/en/stable/shell_autocompletion/
+
+if [[ -x $LOCALBIN/stack ]]; then
+    autoload -U +X bashcompinit && bashcompinit
+    eval "$(stack --bash-completion-script stack)"
+fi
+
+# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
