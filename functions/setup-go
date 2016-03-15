@@ -1,3 +1,5 @@
+# `go` 環境の設定。
+
 if [[ -x $HOME/go/bin/go ]]; then
     export GOPATH=$HOME/goenv
     export GOROOT=$HOME/go
@@ -9,5 +11,17 @@ if [[ -x $HOME/go/bin/go ]]; then
         $GOPATH/bin(N-/)
         $path
     )
+
+    # 環境變數が設定されてゐれば以下のツールをアップデート。
+    if [[ -n $GOTOOLSUPDATE ]]; then
+        go get -u -v github.com/golang/lint/golint
+        go get -u -v github.com/nsf/gocode
+        go get -u -v github.com/redefiance/go-find-references
+        go get -u -v github.com/rogpeppe/godef
+        go get -u -v golang.org/x/tools/cmd/godoc
+        go get -u -v golang.org/x/tools/cmd/goimports
+        go get -u -v golang.org/x/tools/cmd/gorename
+    fi
 fi
+
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
