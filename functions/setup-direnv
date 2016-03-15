@@ -1,5 +1,19 @@
-# https://github.com/direnv/direnv
-# http://qiita.com/kompiro/items/5fc46089247a56243a62
+# # direnv
+#
+# 特定のディレクトリ内でのみ有効になるやうな環境變數を定義する。
+#
+# ## Usage
+#
+# 設定したいディレクトで以下のコマンドを實行する。
+#
+# ```
+# direnv edit .
+# ```
+#
+# ## References
+#
+# * https://github.com/direnv/direnv
+# * http://qiita.com/kompiro/items/5fc46089247a56243a62
 
 if [[ -d $GOPATH ]]; then
     # direnvのmtimeが古ければ更新する。
