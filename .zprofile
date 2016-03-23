@@ -33,7 +33,9 @@ fi
 export MANPAGER=${MANPAGER:-$(whence less)}
 
 # vimを優先
-if [[ -x $(whence vim) ]]; then
+if [[ -x $(whence nvim) ]]; then
+    export EDITOR=$(whence nvim)
+elif [[ -x $(whence vim) ]]; then
     export EDITOR=$(whence vim)
 fi
 # }}}
