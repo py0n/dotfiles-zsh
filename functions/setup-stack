@@ -4,6 +4,15 @@
 if [[ -x $LOCALBIN/stack ]]; then
     autoload -U +X bashcompinit && bashcompinit
     eval "$(stack --bash-completion-script stack)"
+
+    update-stack-tools () {
+        local -a tools
+        tools=(ghc-mod hlint hoogle pandoc stylish-haskell)
+        for t in $tools
+        do
+            stack install --no-copy-bins ${t}
+        done
+    }
 fi
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
