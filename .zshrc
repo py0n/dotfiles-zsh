@@ -342,7 +342,7 @@ esac
 # }}}
 
 if [[ $SHELL =~ "/zsh$" ]]; then
-    restart() {
+    restart-zsh () {
         echo "restart $SHELL"
         exec $SHELL -l
     }
