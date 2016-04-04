@@ -341,6 +341,13 @@ case "$UID" in
 esac
 # }}}
 
+if [[ $SHELL =~ "/zsh$" ]]; then
+    restart() {
+        echo "restart $SHELL"
+        exec $SHELL -l
+    }
+fi
+
 debug_echo "(end) .zshrc"
 
 # vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
