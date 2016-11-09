@@ -1,42 +1,39 @@
 # `go` 環境の設定。
 
-if [[ -x $HOME/go/bin/go ]]; then
-    export GOPATH=$HOME/goenv
-    export GOROOT=$HOME/go
+if [[ ! -d $GOOS ]]; then
+    echo "No $GOOS" 1>&2
+    return 1
+fi
 
-    mkdir -p $GOPATH
+if [[ ! -d $GOPATH ]]; then
+    echo "No $GOPATH" 1>&2
+    return 1
+fi
 
-    path=(
-        $GOROOT/bin(N-/)
-        $GOPATH/bin(N-/)
-        $path
-    )
+# https://golang.org/doc/install/source#tools
+update-go-tools () {
+    go get -u -v github.com/alecthomas/gometalinter
+    go get -u -v github.com/direnv/direnv
+    go get -u -v github.com/golang/lint/golint
+    go get -u -v github.com/jstemmer/gotags
+    go get -u -v github.com/monochromegane/the_platinum_searcher/...
+    go get -u -v github.com/motemen/ghq
+    go get -u -v github.com/nsf/gocode
+    go get -u -v github.com/peco/peco/cmd/peco
+    go get -u -v github.com/redefiance/go-find-references
+    go get -u -v github.com/rogpeppe/godef
+    go get -u -v github.com/tools/godep
+    go get -u -v golang.org/x/tools/cmd/...
+    go get -u -v golang.org/x/tools/cmd/gorename
 
-    # https://golang.org/doc/install/source#tools
-    update-go-tools () {
-        go get -u -v github.com/alecthomas/gometalinter
-        go get -u -v github.com/direnv/direnv
-        go get -u -v github.com/golang/lint/golint
-        go get -u -v github.com/jstemmer/gotags
-        go get -u -v github.com/monochromegane/the_platinum_searcher/...
-        go get -u -v github.com/motemen/ghq
-        go get -u -v github.com/nsf/gocode
-        go get -u -v github.com/peco/peco/cmd/peco
-        go get -u -v github.com/redefiance/go-find-references
-        go get -u -v github.com/rogpeppe/godef
-        go get -u -v github.com/tools/godep
-        go get -u -v golang.org/x/tools/cmd/...
+    # https://github.com/pocke/lemonade
+    go get -d github.com/pocke/lemonade
+    (cd $GOPATH/src/github.com/pocke/lemonade/; make install)
+}
 
-        # https://github.com/pocke/lemonade
-        go get -d github.com/pocke/lemonade
-        cd $GOPATH/src/github.com/pocke/lemonade/
-        make install
-    }
-
-    # 環境變數が設定されてゐれば以下のツールをアップデート。
-    if [[ -n $GOTOOLSUPDATE ]]; then
-        update-go-tools
-    fi
+# 環境變數が設定されてゐれば以下のツールをアップデート。
+if [[ -n $GOTOOLSUPDATE ]]; then
+    update-go-tools
 fi
 
 # vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4

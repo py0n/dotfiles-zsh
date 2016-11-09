@@ -36,6 +36,11 @@ zstyle ':completion:*' group-name ''
 autoload -U compinit && compinit
 # }}}
 
+# 環境変数 {{{
+export GOOS=$HOME/go
+export GOPATH=$HOME/goenv
+# }}}
+
 # {{{ PATH
 # http://www.clear-code.com/blog/2011/9/5.html
 # 重複したパスを除外する
@@ -51,6 +56,9 @@ path=(
     # ndenv
     $HOME/.ndenv/bin(N-/)
     $HOME/.ndenv/shims(N-/)
+    # go
+    $GOOS/bin(N-/)
+    $GOPATH/bin(N-/)
     # anyenv
     $HOME/.anyenv/bin(N-/)
     $HOME/.hsenv/bin(N-/)
