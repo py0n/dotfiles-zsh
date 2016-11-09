@@ -48,6 +48,9 @@ typeset -U path PATH
 #            -: シンボリックリンク先のパスを評価。
 #            /: ディレクトリのみ残す。
 path=(
+    # ndenv
+    $HOME/.ndenv/bin(N-/)
+    $HOME/.ndenv/shims(N-/)
     # anyenv
     $HOME/.anyenv/bin(N-/)
     $HOME/.hsenv/bin(N-/)
@@ -276,6 +279,7 @@ autoload -Uz setup-direnv  && setup-direnv
 autoload -Uz setup-git     && setup-git
 autoload -Uz setup-go      && setup-go
 autoload -Uz setup-less    && setup-less
+autoload -Uz setup-ndenv   && setup-ndenv
 autoload -Uz setup-stack   && setup-stack
 
 autoload -Uz 256colortest

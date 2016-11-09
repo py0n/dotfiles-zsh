@@ -1,0 +1,15 @@
+# `ndenv` の設定
+
+if [[ ! -d $HOME/.ndenv/bin ]];then
+    echo "No \$HOME/.ndenv/bin" 1>&2
+    return 1
+fi
+
+if [[ ! -d $HOME/.ndenv/shims ]]; then
+    echo "No \$HOME/.ndenv/shims" 1>&2
+    return 1
+fi
+
+eval "$(ndenv init -)"
+
+# vim: expandtab filetype=zsh shiftwidth=4 softtabstop=4 ts=4
