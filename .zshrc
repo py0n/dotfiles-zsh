@@ -292,6 +292,7 @@ autoload -Uz setup-stack   && setup-stack
 
 autoload -Uz 256colortest
 autoload -Uz man
+autoload -Uz tm
 autoload -Uz zman
 
 # {{{ プロンプト関連 (prompt)

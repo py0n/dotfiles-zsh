@@ -1,0 +1,10 @@
+# セッションが残っている場合は attach する
+# http://qiita.com/namutaka/items/2026fad09a4b76a808f8
+if [[ -x $(whence tmux) ]]; then
+    if tmux has-session; then
+        tmux attach
+    else
+        tmux -2
+    fi
+fi
+# vim: expandtab filetype=zsh foldmethod=marker shiftwidth=4 softtabstop=4 ts=4
