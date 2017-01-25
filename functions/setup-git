@@ -21,6 +21,7 @@ if [[ -x $(whence git) ]]; then
     ${gitconfig} alias.cm 'commit -m'
     ${gitconfig} alias.d 'diff --find-renames --ignore-space-change'
     ${gitconfig} alias.ds 'diff --find-renames --ignore-space-change --staged'
+    ${gitconfig} alias.graph "log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short"
     ${gitconfig} alias.l 'log --decorate --graph --stat'
     ${gitconfig} alias.o '!f(){ if [[ $# == 0 && -x $(which peco) ]]; then local branch=$(git branch --all | awk "/^[^\*]/{sub(\"  \",\"\");print \$1}" | peco); if [[ ${branch} =~ "remotes/" ]]; then git checkout -b $(echo ${branch} | sed -e "s/^remotes\/[^\/]*\///") $(echo ${branch} | sed -e "s/^remotes\///"); else git checkout ${branch}; fi; else git checkout ${@}; fi; }; f'
     ${gitconfig} alias.ob 'checkout -b'
